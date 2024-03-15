@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import myGif from '@/assets/multispin.gif'
 
 const MintedImage = ({
   image,
@@ -16,7 +17,7 @@ const MintedImage = ({
       )}
     >
       <Image
-        src={image ? image : "/placeholder.png"}
+        src={myGif}
         alt=""
         width={500}
         height={500}

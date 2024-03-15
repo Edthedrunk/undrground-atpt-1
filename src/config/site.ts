@@ -2,23 +2,25 @@
 
 export const site = {
   // Replace with your own title
-  title: "MNTR",
+  title: "BLOK",
 
   // Replace with your own description
-  description: "A Boilerplate for your Lukso minting page",
+  description: "The beginning of your very own Blok Chain",
 
   // Replace with your own domain
-  url: "https://undrground.app",
+  url: "https://edthedrunk.com/blok-charms",
 
   // Replace with your twitter handle
-  twitter: "@_undrground_",
+  twitter: "@Blokcharms",
 
   // Replace with keywords relevant to your project
-  keywords: ["Lukso", "Blockchain", "MNTR"],
+  keywords: ["Lukso", "Blockchain", "BLOK", "Blokcharms"],
 };
 
 // An array of object that will display in the navigation bar
-export const navigation = [{ title: "Inventory", url: "/inventory" }];
+export const navigation = [{ title: "COLLECTING", url: "/collecting" },
+ { title: "CREATING", url: "/creating" },
+ { title: "CLAIMING", url: "/claiming" }];
 
 // Siwe message text
 export const siweMessageText =
@@ -26,4 +28,4 @@ export const siweMessageText =
 
 // Minting Variables
 export const contractAddress = "0x...";
-export const mintCost = 1.5;
+export const mintCost = 0.1;
