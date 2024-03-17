@@ -18,7 +18,7 @@ export const site = {
 };
 
 // An array of object that will display in the navigation bar
-export const navigation = [{ title: "COLLECTING", url: "/collecting" },
+export const navigation = [
  { title: "CREATING", url: "/creating" },
  { title: "CLAIMING", url: "/claiming" }];
 
