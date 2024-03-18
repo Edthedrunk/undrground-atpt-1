@@ -1,34 +1,37 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Input } from "../ui/input";
-import { useState } from "react";
+import { Button } from "../ui/button";
+import { MinusIcon, PlusIcon } from "lucide-react";
+import { useMintContext } from "./mint-context";
 
 const MinterInput = ({ className }: { className?: string }) => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const [value, setValue] = useState(searchParams.get("count") || "");
+  const {setCount, count} = useMintContext();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newSearchParams = new URLSearchParams(searchParams);
-    setValue(e.target.value);
-    if (e.target.value) {
-      newSearchParams.set("count", e.target.value);
-    } else {
-      newSearchParams.delete("count");
-    }
-    router.push(`${pathname}?${newSearchParams.toString()}`);
+  const handleClick = (amount: number) => {
+    if (count + amount < 0) return;
+    setCount(count + amount);
   };
 
   return (
-    <Input
-      type="number"
-      value={value}
-      onChange={handleChange}
-      placeholder="Number of items..."
-      className={className}
-    />
+    <div className="flex">
+      <Button
+        onClick={() => handleClick(-1)}
+        size="sm"
+        className="p-2 rounded-r-none"
+      >
+        <MinusIcon className="size-5" />
+      </Button>
+      <div className="w-20 border grid place-content-center text-lg">
+        {count}
+      </div>
+      <Button
+        onClick={() => handleClick(1)}
+        size="sm"
+        className="p-2 rounded-l-none"
+      >
+        <PlusIcon className="size-5" />
+      </Button>
+    </div>
   );
 };
 
