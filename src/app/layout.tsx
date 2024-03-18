@@ -36,7 +36,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SiteHeader />
-        <main className="py-4">{children}</main>
+        <main className="p-4 container mx-auto">{children}</main>
 
         {/* 
         This is a network lock, by default it will show an error if the logged
