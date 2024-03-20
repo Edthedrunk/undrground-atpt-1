@@ -47,6 +47,11 @@ contract BlokCharms is ERC721Enumerable, ReentrancyGuard, Ownable {
     constructor() ERC721("BlokCharms", "BLOK") {
         colorSupplies.push(ColorSupply("Pink", 1319));
         colorSupplies.push(ColorSupply("Blue", 1764));
+        colorSupplies.push(ColorSupply("Lime", 2829));
+        colorSupplies.push(ColorSupply("Orange", 3045));
+        colorSupplies.push(ColorSupply("Red", 5002));
+        colorSupplies.push(ColorSupply("Black", 13986));
+        colorSupplies.push(ColorSupply("White", 13986));
         // Add other colors similarly
     }
 
