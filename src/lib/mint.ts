@@ -2,7 +2,7 @@ import { getSession } from "@/app/server/session";
 import { contractAddress, mintCost } from "@/config/site";
 import { BrowserProvider, parseEther, toBigInt } from "ethers";
 import { Contract } from "ethers";
-import abi from "@/contracts/abis/myfaketoken.json";
+// import abi from "@/contracts/abis/myfaketoken.json";
 
 export const mint = async (count: number) => {
   // implement minting
@@ -19,7 +19,7 @@ export const mint = async (count: number) => {
     const formattedMintTotal = parseEther(`${mintTotal}`);
     const provider = new BrowserProvider(browserProvider);
     const signer = await provider.getSigner();
-    const contract = new Contract(contractAddress, abi, signer);
+    const contract = new Contract(contractAddress, [], signer);
 
     const tx = await contract.mint(toBigInt(count), {
       value: formattedMintTotal,
