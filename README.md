@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project created by the [Undrground](https://undrground.app) Team
+This is a [Next.js](https://nextjs.org/) project created by the [Undrground](https://undrground.app) Team!
 
 ## Getting Started
 
