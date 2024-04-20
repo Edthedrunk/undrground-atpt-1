@@ -8,7 +8,7 @@ export default function LogoutButton(props: ButtonProps) {
     await destroySession();
   };
   return (
-    <Button variant="ghost" onClick={handleLogout} {...props}>
+    <Button variant="secondary" onClick={handleLogout} {...props}>
       Logout
     </Button>
   );

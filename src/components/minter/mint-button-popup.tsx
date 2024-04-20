@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { MintedImage } from "./minted-image";
 import { MinterInput } from "./minter-input";
-import { useSearchParams } from "next/navigation";
 import { mintCost } from "@/config/site";
 import { MintButton } from "./mint-button";
 import { useMintContext } from "./mint-context";

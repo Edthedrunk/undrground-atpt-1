@@ -3,23 +3,31 @@
 import { useTransition } from "react";
 import { LoaderButton } from "../ui/loader-button";
 import { mint } from "@/lib/mint";
-import { useSearchParams } from "next/navigation";
+import { useMintContext } from "./mint-context";
+import { env } from "@/env";
 
-const MintButton = () => {
+const MintButton = ({ disabled }: {
+  disabled?: boolean
+}) => {
   const [isPending, startTransition] = useTransition();
-  const searchParams = useSearchParams();
+  const { balance, count } = useMintContext();
+
+  if (balance.amount < parseInt(env.NEXT_PUBLIC_MINT_PRICE) * count)
+    return null;
 
   const handleClick = () => {
     startTransition(async () => {
-      const count = parseInt(searchParams.get("count") ?? "0");
       if (count === 0) return;
-      const req = await mint(count);
-      console.log(req);
+      const mintCall = await mint(count);
     });
   };
 
   return (
-    <LoaderButton isLoading={isPending} onClick={handleClick}>
+    <LoaderButton
+      disabled={disabled}
+      isLoading={isPending}
+      onClick={handleClick}
+    >
       Mint
     </LoaderButton>
   );

@@ -5,7 +5,7 @@ import { Suspense } from "react";
 
 const TokenSupply = async () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col grow">
       <p className="text-muted-foreground font-semibold font-lg font-mono">
         :: Supply Totals
       </p>
