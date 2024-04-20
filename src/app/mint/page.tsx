@@ -41,7 +41,7 @@ export default async function MintPage() {
       </section>
       <section
         aria-label="Mint Section"
-        className="relative bg-grid-white/50 w-full py-20"
+        className="relative bg-grid-white/20 w-full py-20"
       >
         <div className="relative z-10 container mx-auto">
           <div className="flex flex-col md:flex-row gap-10 w-full">
