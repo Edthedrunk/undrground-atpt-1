@@ -8,7 +8,7 @@ export const site = {
   description: "The beginning of your very own Blok Chain",
 
   // Replace with your own domain
-  url: "https://edthedrunk.com/blok-charms",
+  url: "https://www.blokcharms.com/",
 
   // Replace with your twitter handle
   twitter: "@Blokcharms",
@@ -19,8 +19,7 @@ export const site = {
 
 // An array of object that will display in the navigation bar
 export const navigation = [
- { title: "CREATING", url: "/creating" },
- { title: "CLAIMING", url: "/claiming" }];
+  { title: "Inventory", url: "/inventory" }];
 
 // Siwe message text
 export const siweMessageText =
