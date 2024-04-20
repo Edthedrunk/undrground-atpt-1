@@ -98,7 +98,9 @@ export default async function Home() {
               care when crafting your desired Blok Chain.
             </p>
             <div className="h-4" />
-            <Link className={buttonVariants()} href="/mint">
+            <Link className={buttonVariants({
+              variant: "secondary",
+            })} href="/mint">
               MINT YOUR BLOCKS
             </Link>
           </div>

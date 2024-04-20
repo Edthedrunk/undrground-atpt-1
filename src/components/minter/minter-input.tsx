@@ -18,11 +18,11 @@ const MinterInput = ({ className }: { className?: string }) => {
       <p className="text-primary text-sm">
         {`${env.NEXT_PUBLIC_MINT_PRICE} ${balance.currency} Per`}
       </p>
-      <div className="flex">
+      <div className="flex grow">
         <Button
           variant="secondary"
           onClick={() => handleClick(-1)}
-          size="sm"
+          size="icon"
           className="p-2 rounded-r-none"
         >
           <MinusIcon className="size-5" />
@@ -32,12 +32,12 @@ const MinterInput = ({ className }: { className?: string }) => {
           type="number"
           min={0}
           onChange={(e) => setCount(parseInt(e.target.value))}
-          className="grow bg-background grid place-content-center text-lg px-4"
+          className="w-full bg-background grid place-content-center text-lg px-4"
         />
         <Button
           variant="secondary"
           onClick={() => handleClick(1)}
-          size="sm"
+          size="icon"
           className="p-2 rounded-l-none"
         >
           <PlusIcon className="size-5" />

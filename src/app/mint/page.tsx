@@ -16,7 +16,7 @@ export default async function MintPage() {
     <div>
       <section
         aria-label="Mint Your Blocks"
-        className="w-full pt-20 min-h-[40vh] max-h-[60vh] h-[55vw] bg-gradient-to-b from-background to-muted-foreground"
+        className="w-full pt-20 min-h-[350px] max-h-[60vh] h-[55vw] bg-gradient-to-b from-background to-muted-foreground"
       >
         <div className="[mask-image:_linear-gradient(to_right,transparent_0,_black_20px,_black_calc(100%-10px),transparent_100%)] h-full relative py-5 z-10 container px-4 md:px-6 border-rounded">
           <div className="flex flex-col items-center justify-center space-y-6">
