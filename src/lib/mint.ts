@@ -1,4 +1,4 @@
-import { getSession } from "@/app/server/session";
+import { getSession } from "@/app/actions/session";
 import { contractAddress, mintCost } from "@/config/site";
 import { BrowserProvider, parseEther, toBigInt } from "ethers";
 import { Contract } from "ethers";

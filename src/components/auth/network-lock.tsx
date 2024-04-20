@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { BrowserProvider } from "ethers";
 
-import { destroySession, getSession } from "@/app/server/session";
+import { destroySession, getSession } from "@/app/actions/session";
 import { AlertCircleIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

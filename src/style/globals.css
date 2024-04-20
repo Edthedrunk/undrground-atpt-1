@@ -5,26 +5,26 @@
 /* All colors are in hsl format */
 @layer base {
   :root {
-    --background: 0 0% 85%;
-    --foreground: 0 0% 10%;
-    --card: 0 0% 90%;
-    --card-foreground: 0 0% 10%;
-    --popover: 0 0% 85%;
-    --popover-foreground: 0 95% 0%;
-    --primary: 0 0% 15%;
-    --primary-foreground: 0 0% 90%;
-    --secondary: 0 10% 70%;
-    --secondary-foreground: 0 0% 10%;
-    --muted: -38 10% 85%;
-    --muted-foreground: 0 0% 35%;
-    --accent: -38 10% 80%;
-    --accent-foreground: 0 0% 10%;
+    --background: 176 0% 95%;
+    --foreground: 176 0% 0%;
+    --card: 176 0% 90%;
+    --card-foreground: 176 0% 10%;
+    --popover: 176 0% 95%;
+    --popover-foreground: 176 95% 0%;
+    --primary: 176 0% 70%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 176 10% 70%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 138 10% 85%;
+    --muted-foreground: 176 0% 35%;
+    --accent: 138 10% 80%;
+    --accent-foreground: 176 0% 10%;
     --destructive: 0 50% 30%;
-    --destructive-foreground: 0 0% 90%;
-    --border: 0 20% 50%;
-    --input: 0 20% 18%;
-    --ring: 0 0% 15%;
-    --radius: 0.3rem;
+    --destructive-foreground: 176 0% 90%;
+    --border: 176 20% 50%;
+    --input: 176 20% 18%;
+    --ring: 176 0% 70%;
+    --radius: 0.5rem;
   }
 }
 

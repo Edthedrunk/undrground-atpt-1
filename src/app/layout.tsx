@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     env.VERCEL_ENV === "production" ? site.url : "http://localhost:3000"
   ),
-  title: `${site.title} | %s`,
+  title: `${site.title} | %t`,
   description: site.description,
   openGraph: {
     title: site.title,
@@ -33,10 +33,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-background">
-      <body className={cn("bg-grid-black/5", inter.className)}>
+    <html lang="en">
+      <body className={cn("bg-primary", inter.className)}>
         <SiteHeader />
-        <main className="mt-4">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );

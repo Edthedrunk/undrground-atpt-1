@@ -1,6 +1,3 @@
-// create a client context so we dont have to prop
-// drill the client to every component that needs it
-// for count and profile balance
 "use client";
 
 import { createContext, useContext, useState } from "react";

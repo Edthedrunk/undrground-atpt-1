@@ -3,6 +3,8 @@ import { z } from "zod";
 
 export const env = createEnv({
   shared: {
+    NEXT_PUBLIC_CONTRACT_ADDRESS: z.string(),
+    NEXT_PUBLIC_MINT_PRICE: z.string(),
     NODE_ENV: z
       .enum(["development", "production", "test"])
       .default("development"),
@@ -13,6 +15,9 @@ export const env = createEnv({
   },
   runtimeEnv: {
     SESSION_PASS: process.env.SESSION_PASS,
+    NEXT_PUBLIC_CONTRACT_ADDRESS: process.env
+      .NEXT_PUBLIC_CONTRACT_ADDRESS,
+    NEXT_PUBLIC_MINT_PRICE: process.env.NEXT_PUBLIC_MINT_PRICE,
     NODE_ENV: process.env.NODE_ENV,
     VERCEL_ENV: process.env.VERCEL_ENV,
   },

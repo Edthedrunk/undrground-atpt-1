@@ -1,4 +1,4 @@
-import { getSession } from "@/app/server/session";
+import { getSession } from "@/app/actions/session";
 import SignIn from "./signin";
 import { Suspense } from "react";
 import LogoutButton from "./logout";

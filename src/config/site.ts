@@ -23,7 +23,7 @@ export const navigation = [
 
 // Siwe message text
 export const siweMessageText =
-  "By signing in, you agree to our terms of service.";
+  "By signing in, you agree to our terms and conditions and have read about and understand how the Blokcharms project works.";
 
 // Minting Variables
 export const contractAddress = "0x...";

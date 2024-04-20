@@ -5,7 +5,7 @@ import { useEffect, useState, useTransition } from "react";
 import { BrowserProvider, getAddress } from "ethers";
 import { SiweMessage } from "siwe";
 
-import { setNonce, setSession } from "@/app/server/session";
+import { setNonce, setSession } from "@/app/actions/session";
 import { LoaderButton } from "@/components/ui/loader-button";
 import { siweMessageText } from "@/config/site";
 

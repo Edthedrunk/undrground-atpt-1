@@ -11,6 +11,44 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
+export const initialDistribution = [
+  {
+    name: "Pink",
+    type: "pink",
+    total: 1319,
+  },
+  {
+    name: "Gold",
+    type: "gold",
+    total: 1764,
+  },
+  {
+    name: "Blue",
+    type: "blue",
+    total: 2898,
+  },
+  {
+    name: "Lime",
+    type: "lime",
+    total: 3045,
+  },
+  {
+    name: "Orange",
+    type: "orange",
+    total: 5002,
+  },
+  {
+    name: "Black",
+    type: "black",
+    total: 13986,
+  },
+  {
+    name: "White",
+    type: "white",
+    total: 13986,
+  },
+];
+
 export const getRpc = (chainId: number) => {
   return chainId === 42 ? mainnetRPC : testnetRPC;
 };
