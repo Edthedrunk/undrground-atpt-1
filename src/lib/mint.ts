@@ -16,7 +16,7 @@ export const mint = async (count: number) => {
       throw new Error("No profile found");
     }
 
-    const mintTotal = (Number(env.NEXT_PUBLIC_MINT_PRICE) * count).toFixed(1);
+    const mintTotal = (Number(env.NEXT_PUBLIC_MINT_PRICE) * count).toFixed(2);
     const formattedMintTotal = parseEther(`${mintTotal}`);
     const provider = new BrowserProvider(browserProvider);
     const signer = await provider.getSigner();
@@ -24,6 +24,7 @@ export const mint = async (count: number) => {
 
     await contract.mint(toBigInt(count), {
       value: formattedMintTotal,
+      gasLimit: 1000000,
     });
 
     return { status: true };
