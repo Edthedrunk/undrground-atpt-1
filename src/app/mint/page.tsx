@@ -1,6 +1,3 @@
-// import { MintButtonPopup } from "@/components/minter/mint-button-popup";
-// import { MintProvider } from "@/components/minter/mint-context";
-// import { MintedImage } from "@/components/minter/minted-image";
 import { getSession } from "@/app/actions/session";
 import { MintProvider } from "@/components/minter/mint-context";
 import { TokenSupply } from "@/components/ui/token-supply";
@@ -31,6 +28,7 @@ export default async function MintPage() {
             </div>
           </div>
           <Image
+            priority
             alt="Mint"
             className="pointer-events-none z-0 w-full right-0 absolute bottom-0 [mask]"
             height={300}

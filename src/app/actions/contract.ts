@@ -19,3 +19,10 @@ export const getDistribution = async () => {
 
     return currentContractDistribution
 }
+
+export const mintEnabled = async (): Promise<boolean> => {
+    const provider = new JsonRpcProvider(testnetRPC);
+    const contract = new Contract(env.NEXT_PUBLIC_CONTRACT_ADDRESS, abi, provider);
+    const mintEnabled = await contract.mintSet();
+    return mintEnabled
+}

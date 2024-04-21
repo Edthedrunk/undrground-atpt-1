@@ -5,12 +5,13 @@ import { LoaderButton } from "../ui/loader-button";
 import { mint } from "@/lib/mint";
 import { useMintContext } from "./mint-context";
 import { env } from "@/env";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
-const MintButton = ({ disabled }: {
-  disabled?: boolean
-}) => {
+const MintButton = ({ disabled }: { disabled?: boolean }) => {
   const [isPending, startTransition] = useTransition();
   const { balance, count } = useMintContext();
+  const router = useRouter();
 
   if (balance.amount < parseInt(env.NEXT_PUBLIC_MINT_PRICE) * count)
     return null;
@@ -19,6 +20,12 @@ const MintButton = ({ disabled }: {
     startTransition(async () => {
       if (count === 0) return;
       const mintCall = await mint(count);
+      if (mintCall.status) {
+        toast.success("Minted");
+        router.push("/inventory");
+      } else {
+        toast.error("Error Minting");
+      }
     });
   };
 

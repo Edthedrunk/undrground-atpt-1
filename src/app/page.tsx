@@ -3,7 +3,7 @@ import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { TokenSupply } from "@/components/ui/token-supply";
 
-export default async function Home() {
+export default function Home() {
   return (
     <div>
       <section
@@ -65,6 +65,7 @@ export default async function Home() {
           </div>
           <Image
             src="/step1.png"
+            priority
             alt="Step 1"
             width={600}
             height={600}

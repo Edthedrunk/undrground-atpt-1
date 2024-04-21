@@ -5,6 +5,7 @@ import { site } from "@/config/site";
 import { env } from "@/env";
 import { SiteHeader } from "@/components/layout/site-header";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className={cn("bg-primary", inter.className)}>
         <SiteHeader />
         <main>{children}</main>
+        <Toaster position="top-center"/>
       </body>
     </html>
   );
