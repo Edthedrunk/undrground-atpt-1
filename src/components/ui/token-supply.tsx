@@ -30,7 +30,7 @@ const TokenSupplyData = async () => {
         currentDistibution.map((token) => (
           <div key={token.name} className="grow">
             <p className="font-mono text-muted-foreground text-sm md:text-base">{`${token.name} : ${token.distributed} / ${token.total}`}</p>
-            <Progress value={((token.distributed + 900) / token.total) * 100} />
+            <Progress value={(token.distributed / token.total) * 100} />
           </div>
         ))}
     </div>

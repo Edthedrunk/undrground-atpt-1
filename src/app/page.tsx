@@ -13,7 +13,7 @@ export default function Home() {
         <div className="[mask-image:_linear-gradient(to_right,transparent_0,_black_20px,_black_calc(100%-10px),transparent_100%)] h-full relative py-5 z-10 container px-4 md:px-6 border-rounded">
           <div className="flex flex-col items-center justify-center space-y-6">
             <div className="space-y-4 text-center">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+              <h1 className="text-5xl font-bold tracking-tighter md:text-5xl lg:text-6xl">
                 CREATE YOUR BLOK CHAIN
               </h1>
               <p className="font-mono mx-auto max-w-[700px] text-muted-foreground md:text-xl">
