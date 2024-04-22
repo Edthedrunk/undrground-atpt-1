@@ -22,11 +22,15 @@ export const getDistribution = async () => {
     return currentContractDistribution
 }
 
-export const getInventory = async (address: string) => {
+export const getInventory = async (address: string = "") => {
     const provider = new JsonRpcProvider(testnetRPC);
     const contract = new Contract(env.NEXT_PUBLIC_CONTRACT_ADDRESS, abi, provider);
+    
+    if (address === "") {
+        return {}
+    }
+    
     const tokenIds = await contract.tokenIdsOf(address);
-
     const inventory: { [key: string]: string[] } = {}
     await Promise.all(
         tokenIds.map(async (tokenId: string) => {
@@ -41,7 +45,7 @@ export const getInventory = async (address: string) => {
             }
         })
     )
-    return inventory
+    return inventory ?? {}
 }
 
 export const mintEnabled = async (): Promise<boolean> => {

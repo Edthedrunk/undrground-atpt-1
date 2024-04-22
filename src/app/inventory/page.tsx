@@ -1,12 +1,10 @@
-import { redirect } from "next/navigation";
 import { getInventory } from "../actions/contract";
 import { getSession } from "../actions/session";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 
 export default async function InventoryPage() {
   const profile = await getSession();
-  const tokens = await getInventory(profile?.address ?? "");
+  const tokens = await getInventory(profile?.address);
   const colors = ["black", "white", "orange", "lime", "blue", "gold", "pink"];
 
   return (
@@ -33,7 +31,9 @@ export default async function InventoryPage() {
         className="flex flex-col grow relative bg-foreground bg-grid-white/5 py-12"
       >
         <div className="h-full grid place-content-center">
-          <h2 className="text-muted-foreground animate-pulse text-center text-5xl md:text-6xl">Builder Coming Soon...</h2>
+          <h2 className="text-muted-foreground animate-pulse text-center text-5xl md:text-6xl">
+            Builder Coming Soon...
+          </h2>
         </div>
         <div className="relative z-10 container mx-auto flex flex-col">
           <div className="flex justify-center items-center flex-wrap md:flex-nowrap gap-2">
