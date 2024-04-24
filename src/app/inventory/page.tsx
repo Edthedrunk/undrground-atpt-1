@@ -30,12 +30,74 @@ export default async function InventoryPage() {
       </section>
       <section
         aria-label="Builder"
-        className="flex flex-col grow relative bg-foreground bg-grid-white/5 py-12"
+        className="pb-20 flex flex-col grow relative bg-foreground bg-grid-white/5"
       >
-        <div className="h-full w-full relative">
-          <h2 className="absolute left-1/2 -translate-x-1/2 w-full top-5 text-muted text-6xl text-center font-bold">
-            Builder Coming Soon
-          </h2>
+        <div className="overflow-hidden w-full relative h-full">
+          <div className="pointer-events-none absolute flex flex-col gap-2 inset-0 rotate-3 py-12">
+            <div className="flex flex-row gap-2">
+              <div className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center">
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+              </div>
+              <div
+                aria-hidden="true"
+                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
+              >
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+              </div>
+            </div>
+            <div className="flex flex-row gap-2">
+              <div
+                aria-hidden="true"
+                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
+              >
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+              </div>
+              <div
+                aria-hidden="true"
+                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
+              >
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+              </div>
+            </div>
+            <div className="flex flex-row gap-2">
+              <div
+                aria-hidden="true"
+                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
+              >
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+              </div>
+              <div
+                aria-hidden="true"
+                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
+              >
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+                <span>BUILDER COMING SOON</span>
+              </div>
+            </div>
+          </div>
           <Canvas />
         </div>
         <div className="relative z-10 container mx-auto flex flex-col">

@@ -19,7 +19,9 @@ export const site = {
 
 // An array of object that will display in the navigation bar
 export const navigation = [
-  { title: "Inventory", url: "/inventory" }];
+  { title: "Mint", url: "/mint" },
+  { title: "Inventory", url: "/inventory" }
+];
 
 // Siwe message text
 export const siweMessageText =

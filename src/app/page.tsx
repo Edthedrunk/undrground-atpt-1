@@ -99,9 +99,12 @@ export default function Home() {
               care when crafting your desired Blok Chain.
             </p>
             <div className="h-4" />
-            <Link className={buttonVariants({
-              variant: "secondary",
-            })} href="/mint">
+            <Link
+              className={buttonVariants({
+                variant: "secondary",
+              })}
+              href="/mint"
+            >
               MINT YOUR BLOCKS
             </Link>
           </div>
@@ -115,15 +118,37 @@ export default function Home() {
         </div>
         <div className="z-0 absolute pointer-events-none inset-0 flex items-center justify-center bg-foreground [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       </section>
+      <section className="relative py-12 bg-primary bg-grid-white/20">
+        <div
+          aria-label="Step #3"
+          className="relative z-10 flex flex-col container mx-auto"
+        >
+          <div className="flex flex-col items-start">
+            <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl">
+              STEP #3
+            </h2>
+            <div className="h-1" />
+            <p className="text-muted-foreground font-semibold font-lg font-mono">
+              :: Claiming your charms{" "}
+              <span className="text-bold">(coming slightly less soon)</span>
+            </p>
+            <div className="h-4" />
+            <p className="text-muted-foreground font-mono text-sm md:text-base">
+              Phase 3 is the backbone of the BlokCharms ecosystem. Your
+              BlokChain will only be able to claim each BlokCharm once. Most
+              BlokCharms will be token gated by the partnering project, 1
+              Blokchain + ANY Partner NFT = 1 Partner Charm Charms will be
+              separately tradeable Free Claims with rarity structures similar to
+              BLOKS
+            </p>
+            <div className="h-4" />
+            <Link className={buttonVariants()} href="/mint">
+              MINT YOUR BLOCKS
+            </Link>
+          </div>
+        </div>
+        <div className="z-0 absolute pointer-events-none inset-0 flex items-center justify-center bg-primary [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      </section>
     </div>
   );
-}
-
-{
-  /* <div className="w-full md:w-1/2 flex flex-col gap-4">
-  <MintProvider balance={profile?.balance}>
-    <MintedImage className="shrink-0 w-auto h-auto object-cover" />
-    <MintButtonPopup />
-  </MintProvider>
-</div> */
 }
