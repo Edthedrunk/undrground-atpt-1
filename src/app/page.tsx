@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
-import { TokenSupply } from "@/components/ui/token-supply";
+import { TokenSupply } from "@/components/layout/token-supply";
 
 export default function Home() {
   return (

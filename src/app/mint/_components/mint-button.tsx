@@ -1,7 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
-import { LoaderButton } from "../ui/loader-button";
+import { LoaderButton } from "@/components/ui/loader-button";
 import { mint } from "@/lib/mint";
 import { useMintContext } from "./mint-context";
 import { env } from "@/env";

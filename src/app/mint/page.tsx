@@ -1,9 +1,9 @@
 import { getSession } from "@/app/actions/session";
-import { MintProvider } from "@/components/minter/mint-context";
-import { TokenSupply } from "@/components/ui/token-supply";
+import { MintProvider } from "./_components/mint-context";
+import { TokenSupply } from "@/components/layout/token-supply";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { MinterInput } from "@/components/minter/minter-input";
-import { MintButton } from "@/components/minter/mint-button";
+import { MinterInput } from "./_components/minter-input";
+import { MintButton } from "./_components/mint-button";
 import Image from "next/image";
 
 export default async function MintPage() {

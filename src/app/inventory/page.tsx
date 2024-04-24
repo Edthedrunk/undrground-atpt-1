@@ -1,6 +1,8 @@
 import { getInventory } from "../actions/contract";
 import { getSession } from "../actions/session";
 import Image from "next/image";
+import { BlokModel } from "./_components/blok-model";
+import { Canvas } from "./_components/canvas";
 
 export default async function InventoryPage() {
   const profile = await getSession();
@@ -30,10 +32,11 @@ export default async function InventoryPage() {
         aria-label="Builder"
         className="flex flex-col grow relative bg-foreground bg-grid-white/5 py-12"
       >
-        <div className="h-full grid place-content-center">
-          <h2 className="text-muted-foreground animate-pulse text-center text-5xl md:text-6xl">
-            Builder Coming Soon...
+        <div className="h-full w-full relative">
+          <h2 className="absolute left-1/2 -translate-x-1/2 w-full top-5 text-muted text-6xl text-center font-bold">
+            Builder Coming Soon
           </h2>
+          <Canvas />
         </div>
         <div className="relative z-10 container mx-auto flex flex-col">
           <div className="flex justify-center items-center flex-wrap md:flex-nowrap gap-2">
