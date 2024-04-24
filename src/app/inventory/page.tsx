@@ -7,7 +7,7 @@ import { Canvas } from "./_components/canvas";
 export default async function InventoryPage() {
   const profile = await getSession();
   const tokens = await getInventory(profile?.address);
-  const colors = ["Black", "White", "Orange", "Lime", "Blue", "Gold", "Pink"];
+  const colors = ["black", "white", "orange", "lime", "blue", "gold", "pink"];
 
   return (
     <div className="flex flex-col h-screen">
