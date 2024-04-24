@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     env.VERCEL_ENV === "production" ? site.url : "http://localhost:3000"
   ),
-  title: `${site.title} | %t`,
+  title: site.title,
   description: site.description,
   openGraph: {
     title: site.title,
@@ -38,7 +38,7 @@ export default function RootLayout({
       <body className={cn("bg-primary", inter.className)}>
         <SiteHeader />
         <main>{children}</main>
-        <Toaster position="top-center"/>
+        <Toaster position="top-center" />
       </body>
     </html>
   );
