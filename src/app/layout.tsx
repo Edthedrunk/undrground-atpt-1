@@ -6,6 +6,7 @@ import { env } from "@/env";
 import { SiteHeader } from "@/components/layout/site-header";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
+import { NetworkLock } from "@/components/auth/network-lock";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ export default function RootLayout({
         <SiteHeader />
         <main>{children}</main>
         <Toaster position="top-center" />
+        <NetworkLock />
       </body>
     </html>
   );

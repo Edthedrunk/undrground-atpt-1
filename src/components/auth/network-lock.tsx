@@ -1,80 +1,49 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { BrowserProvider } from "ethers";
-
-import { destroySession, getSession } from "@/app/actions/session";
 import { AlertCircleIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
-const NetworkLock = ({
-  mainnet = false,
-  testnet = false,
-}: {
-  mainnet?: boolean;
-  testnet?: boolean;
-}) => {
+const NetworkLock = () => {
   const [open, setOpen] = useState(false);
-  const [check, setCheck] = useState("extension");
-  const descriptions = {
-    sessionMatchWalletError:
-      "Your extension is not connected to the same network as your session, please logout and back in with your new wallet or change your extension back to this account. And refresh.",
-    mainnetExtenstionError:
-      "This application is only available on mainnet, please change to mainnet in your extension and refresh.",
-    testnetExtenstionError:
-      "This application is only available on testnet, please change to testnet in your extension and refresh.",
-    mainnetSessionError:
-      "This application is only available on mainnet, you are currently logged into a testnet account, please log into a mainnet account and refresh.",
-    testnetSessionError:
-      "This application is only available on testnet, you are currently logged into a mainnet account, please log into a testnet account and refresh.",
-  };
+  const [chainId, setChainId] = useState<number | null>(null);
 
   useEffect(() => {
     const check = async () => {
-      const profile = await getSession();
       const provider = new BrowserProvider(window.lukso);
       const network = await provider.getNetwork();
-      const chainId = Number(network.chainId);
+      const _chainId = Number(network.chainId);
 
-      if (provider) {
-        if (mainnet && chainId !== 42) {
-          setCheck("extension");
-          setOpen(true);
-        }
+      setChainId(_chainId);
+    };
 
-        if (testnet && chainId !== 4201) {
-          setCheck("extension");
-          setOpen(true);
-        }
-      }
+    check();
+  }, []);
 
-      if (profile) {
-        if (mainnet && profile.chainId !== 42) {
-          setCheck("session");
-          setOpen(true);
-        }
-        if (testnet && profile.chainId !== 4201) {
-          setCheck("session");
-          setOpen(true);
-        }
-      }
-
-      if (provider && profile) {
-        if (profile.chainId !== chainId) {
-          setCheck("mismatch");
-          setOpen(true);
-        }
+  useEffect(() => {
+    const check = async () => {
+      if (chainId && chainId !== 42) {
+        setOpen(true);
       }
     };
 
     check();
-  }, [mainnet, testnet]);
+  }, [chainId]);
 
-  const handleLogout = async () => {
-    setOpen(false);
-    await destroySession();
+  const handleChangeNetwork = async () => {
+    try {
+      await window.lukso.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: "0x2a" }],
+      });
+
+      setOpen(false);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -94,29 +63,11 @@ const NetworkLock = ({
               </h1>
             </div>
             <p className="font-mono text-muted-foreground">
-              {mainnet && check === "extension"
-                ? descriptions.mainnetExtenstionError
-                : testnet && check === "extension"
-                ? descriptions.testnetExtenstionError
-                : mainnet && check === "session"
-                ? descriptions.mainnetSessionError
-                : testnet && check === "session"
-                ? descriptions.testnetSessionError
-                : check === "mismatch"
-                ? descriptions.sessionMatchWalletError
-                : "Please refresh the page."}
+              This application is only available on mainnet, please change to
+              mainnet in your extension and refresh.
             </p>
             <div className="h-full" />
-            {check === "session" ||
-              (check === "mismatch" && (
-                <Button
-                  onClick={handleLogout}
-                  className="shrink-0"
-                  variant="default"
-                >
-                  Logout
-                </Button>
-              ))}
+            <Button onClick={handleChangeNetwork}>Change to Mainnet</Button>
           </div>
         </div>
       </DialogContent>

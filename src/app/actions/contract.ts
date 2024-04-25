@@ -1,12 +1,10 @@
 import { env } from "@/env";
-import { initialDistribution, mainnetRPC, testnetRPC } from "@/lib/utils";
+import { initialDistribution, mainnetRPC } from "@/lib/utils";
 import { Contract, JsonRpcProvider } from "ethers";
 import abi from "@/contracts/abis/blokcharms.json";
-import ERC725 from "@erc725/erc725.js";
-import lsp4 from "@erc725/erc725.js/schemas/LSP4DigitalAsset.json";
 
 export const getDistribution = async () => {
-    const provider = new JsonRpcProvider(testnetRPC);
+    const provider = new JsonRpcProvider(mainnetRPC);
     const contract = new Contract(env.NEXT_PUBLIC_CONTRACT_ADDRESS, abi, provider);
 
     const currentContractDistribution = await Promise.all(
@@ -14,7 +12,7 @@ export const getDistribution = async () => {
             const totalMinted = await contract.totalMinted(token.type);
             return {
                 ...token,
-                distributed: Number(totalMinted),
+                distributed: Number(totalMinted) ?? 0,
             };
         })
     );
