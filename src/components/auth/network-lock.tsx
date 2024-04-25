@@ -5,7 +5,6 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { BrowserProvider } from "ethers";
 import { AlertCircleIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 
 const NetworkLock = () => {
   const [open, setOpen] = useState(false);
@@ -16,11 +15,13 @@ const NetworkLock = () => {
       const provider = new BrowserProvider(window.lukso);
       const network = await provider.getNetwork();
       const _chainId = Number(network.chainId);
-
       setChainId(_chainId);
     };
-
-    check();
+    try {
+      if (window.lukso) {
+        check();
+      }
+    } catch (_error) {}
   }, []);
 
   useEffect(() => {

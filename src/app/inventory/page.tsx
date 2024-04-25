@@ -1,7 +1,6 @@
 import { getInventory } from "../actions/contract";
 import { getSession } from "../actions/session";
 import Image from "next/image";
-import { BlokModel } from "./_components/blok-model";
 import { Canvas } from "./_components/canvas";
 
 export default async function InventoryPage() {
@@ -22,7 +21,8 @@ export default async function InventoryPage() {
                 INVENTORY
               </h1>
               <p className="font-mono mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                This is where you can view your Bloks and eventually build your Chain.
+                This is where you can view your Bloks and eventually build your
+                Chain.
               </p>
             </div>
           </div>

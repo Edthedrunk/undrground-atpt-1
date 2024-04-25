@@ -28,42 +28,42 @@ const verifySiwe = async (
     return { status: false, error: "Not Authorized" };
   }
 
-  if (wallet === "lukso") {
-    try {
-      // verify universal profile signature
-      const hashedMessage = hashMessage(siwe.prepareMessage());
-      const universalProfile = new Contract(
-        siwe.address,
-        universalprofile,
-        provider
-      );
+  // if (wallet === "lukso") {
+  try {
+    // verify universal profile signature
+    const hashedMessage = hashMessage(siwe.prepareMessage());
+    const universalProfile = new Contract(
+      siwe.address,
+      universalprofile,
+      provider
+    );
 
-      const isValidSignature = universalProfile.getFunction("isValidSignature");
-      const callFunction = await isValidSignature(hashedMessage, signature);
+    const isValidSignature = universalProfile.getFunction("isValidSignature");
+    const callFunction = await isValidSignature(hashedMessage, signature);
 
-      if (callFunction !== "0x1626ba7e") {
-        return { status: false, error: "Not Authorized" };
-      }
-
-      return { status: true, siwe };
-    } catch (error) {
-      return { status: false, error };
+    if (callFunction !== "0x1626ba7e") {
+      return { status: false, error: "Not Authorized" };
     }
+
+    return { status: true, siwe };
+  } catch (error) {
+    return { status: false, error };
   }
+  // }
 
   // verify ethers signature
-  else {
-    try {
-      await siwe.verify({
-        signature,
-        nonce,
-      });
+  // else {
+  //   try {
+  //     await siwe.verify({
+  //       signature,
+  //       nonce,
+  //     });
 
-      return { status: true, siwe };
-    } catch (error) {
-      return { status: false, error };
-    }
-  }
+  //     return { status: true, siwe };
+  //   } catch (error) {
+  //     return { status: false, error };
+  //   }
+  // }
 };
 
 export const getSession = async () => {
@@ -72,12 +72,7 @@ export const getSession = async () => {
     return undefined;
   }
 
-  let profile;
-  if (session.siwe.requestId === "lukso") {
-    profile = await getLSP3Profile(session.siwe.address, session.siwe.chainId);
-  } else {
-    profile = await getEOAProfile(session.siwe.address, session.siwe.chainId);
-  }
+  const profile = await getLSP3Profile(session.siwe.address, session.siwe.chainId)
 
   return profile;
 };

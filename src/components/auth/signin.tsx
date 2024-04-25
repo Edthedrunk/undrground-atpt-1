@@ -28,8 +28,7 @@ export default function SignIn() {
 
   const signIn = async () => {
     try {
-      const providerObject = window.lukso || window.ethereum;
-      const provider = new BrowserProvider(providerObject);
+      const provider = new BrowserProvider(window.lukso);
       const accounts = await provider
         .send("eth_requestAccounts", [])
         .catch(() => {
@@ -52,7 +51,6 @@ export default function SignIn() {
         version: "1",
         chainId,
         nonce,
-        requestId: window.lukso ? "lukso" : "metamask",
       }).prepareMessage();
 
       const signer = await provider.getSigner();
