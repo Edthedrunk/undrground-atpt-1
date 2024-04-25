@@ -1,5 +1,5 @@
 import { env } from "@/env";
-import { initialDistribution, testnetRPC } from "@/lib/utils";
+import { initialDistribution, mainnetRPC, testnetRPC } from "@/lib/utils";
 import { Contract, JsonRpcProvider } from "ethers";
 import abi from "@/contracts/abis/blokcharms.json";
 import ERC725 from "@erc725/erc725.js";
@@ -23,13 +23,13 @@ export const getDistribution = async () => {
 }
 
 export const getInventory = async (address: string = "") => {
-    const provider = new JsonRpcProvider(testnetRPC);
+    const provider = new JsonRpcProvider(mainnetRPC);
     const contract = new Contract(env.NEXT_PUBLIC_CONTRACT_ADDRESS, abi, provider);
-    
+
     if (address === "") {
         return {}
     }
-    
+
     const tokenIds = await contract.tokenIdsOf(address);
     const inventory: { [key: string]: string[] } = {}
     await Promise.all(
@@ -49,7 +49,7 @@ export const getInventory = async (address: string = "") => {
 }
 
 export const mintEnabled = async (): Promise<boolean> => {
-    const provider = new JsonRpcProvider(testnetRPC);
+    const provider = new JsonRpcProvider(mainnetRPC);
     const contract = new Contract(env.NEXT_PUBLIC_CONTRACT_ADDRESS, abi, provider);
     const mintEnabled = await contract.mintSet();
     return mintEnabled

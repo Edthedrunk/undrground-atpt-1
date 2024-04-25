@@ -22,7 +22,7 @@ export default async function InventoryPage() {
                 INVENTORY
               </h1>
               <p className="font-mono mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                This is where you can view your Bloks.
+                This is where you can view your Bloks and eventually build your Chain.
               </p>
             </div>
           </div>
