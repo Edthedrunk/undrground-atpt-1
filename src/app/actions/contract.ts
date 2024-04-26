@@ -17,7 +17,15 @@ export const getDistribution = async () => {
         })
     );
 
-    return currentContractDistribution
+    const total = currentContractDistribution.reduce(
+        (acc, cur) => acc + (cur.distributed ?? 0),
+        0
+    )
+
+    return {
+        current: currentContractDistribution,
+        total
+    }
 }
 
 export const getInventory = async (address: string = "") => {

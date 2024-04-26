@@ -3,12 +3,9 @@ import { BrowserProvider, parseEther, toBigInt } from "ethers";
 import { Contract } from "ethers";
 import { env } from "@/env";
 import abi from "@/contracts/abis/blokcharms.json";
-import { toast } from "sonner";
 
 export const mint = async (count: number) => {
-  // implement minting
   try {
-    // something like this
     const profile = await getSession();
     const browserProvider = window.lukso;
 
