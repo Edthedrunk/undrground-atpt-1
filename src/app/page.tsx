@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { TokenSupply } from "@/components/layout/token-supply";
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
@@ -22,9 +23,22 @@ export default function Home() {
                 of the process!
               </p>
             </div>
-            <Link className={buttonVariants()} href="/mint">
-              MINT YOUR BLOCKS
-            </Link>
+            <div className="flex gap-2 items-center">
+              <Link className={buttonVariants()} href="/mint">
+                MINT
+              </Link>
+              <Link
+                className={buttonVariants({
+                  variant: "outline",
+                  className: "flex items-center gap-2",
+                })}
+                target="_blank"
+                href="https://universal.page/collections/0x1f35651b7f36ec91804b6cc603652a12d7cb87c6"
+              >
+                COLLECTION
+                <ArrowRight className="size-5" />
+              </Link>
+            </div>
           </div>
           <Image
             alt="Hero"
