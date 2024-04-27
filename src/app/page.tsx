@@ -151,7 +151,7 @@ export default function Home() {
               Phase 3 is the backbone of the BlokCharms ecosystem. Your
               BlokChain will only be able to claim each BlokCharm once. Most
               BlokCharms will be token gated by the partnering project, 1
-              Blokchain + ANY Partner NFT = 1 Partner Charm Charms will be
+              Blokchain + ANY Partner NFT = 1 Partner Charm. Charms will be
               separately tradeable Free Claims with rarity structures similar to
               BLOKS
             </p>

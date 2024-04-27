@@ -14,6 +14,7 @@ export default function HiddenCanvas() {
         ref={canvasRef}
         gl={{ preserveDrawingBuffer: true }}
         shadows
+        color="gray"
         style={{
           width: "1000px",
           height: "1000px",
