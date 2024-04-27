@@ -2,10 +2,9 @@
 
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas as Rcanvas } from "@react-three/fiber";
-import { Suspense } from "react";
 import { ChainModel } from "./chain";
 
-export default function Canvas({ children }: any) {
+export default function Canvas() {
   return (
     <Rcanvas
       shadows

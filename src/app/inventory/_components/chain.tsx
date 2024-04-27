@@ -3,13 +3,15 @@
 import React from "react";
 import { BlokModel } from "./blok-model";
 
-export function ChainModel(props: JSX.IntrinsicElements["group"]) {
+export function ChainModel(
+  props: JSX.IntrinsicElements["group"] & { seed?: string }
+) {
   const colors = ["Black", "White", "Orange", "Lime", "Blue", "Gold", "Pink"];
   const pickRandomColor = () =>
     colors[Math.floor(Math.random() * colors.length)];
 
   const [links, setLinks] = React.useState(
-    [...Array(42)].map(() => pickRandomColor())
+    [...Array(42)].map((i, index) => (index == 0 ? "Black" : "White"))
   );
 
   return (
