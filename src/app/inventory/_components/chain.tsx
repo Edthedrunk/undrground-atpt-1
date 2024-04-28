@@ -10,11 +10,11 @@ export function ChainModel(
   const { linkOrder } = useBuilderContext();
 
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} position={[0, 0.5, 0]}>
       {Object.values(linkOrder).map((value, i) => (
         <BlokModel
           key={i}
-          rotation={[0, (2 * Math.PI * i) / 42, 0]}
+          rotation={[0, (-2 * Math.PI * i) / 42, 0]}
           flipped={i % 2 === 1}
           color={value as any}
         />

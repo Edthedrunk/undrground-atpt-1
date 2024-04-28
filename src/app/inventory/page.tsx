@@ -1,11 +1,12 @@
 import { getInventory } from "../actions/contract";
 import { getSession } from "../actions/session";
-import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { BuilderProvider } from "./_components/builder-context";
+import { Controls } from "./_components/controls";
+import { Inventory } from "./_components/inventory";
 
 const Canvas = dynamic(
   () => import("./_components/canvas").then((mod) => mod.default),
@@ -22,7 +23,6 @@ const Canvas = dynamic(
 export default async function InventoryPage() {
   const profile = await getSession();
   const tokens = await getInventory(profile?.address);
-  const colors = ["black", "white", "orange", "lime", "blue", "gold", "pink"];
 
   return (
     <div className="flex flex-col h-screen">
@@ -70,75 +70,11 @@ export default async function InventoryPage() {
         className="py-10 flex flex-col grow relative bg-foreground bg-grid-white/5"
       >
         <div className="h-full p-4 gap-4 relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-center">
-          <BuilderProvider>
-            <div className="aspect-square md:aspect-auto bg-gradient-to-b from-background to-muted-foreground rounded-md drop-shadow sm:h-[300px] md:h-full max-h-[1200px] w-full max-w-[75vw] lg-[max-w-800px]">
+          <BuilderProvider inventory={tokens}>
+            <div className="relative aspect-square bg-gradient-to-b from-background to-muted-foreground rounded-md drop-shadow w-full max-w-[800px]">
+              <Controls />
+              <Inventory />
               <Canvas />
-            </div>
-            <div className="flex flex-col sm:flex-row gap-2">
-              <div className="flex flex-row md:flex-col items-center justify-center gap-2">
-                {colors.slice(0, 3).map((color) => {
-                  const colorCount = tokens[color]?.length ?? 0;
-                  return (
-                    <div
-                      key={color}
-                      className="w-[75px] flex flex-col justify-start"
-                    >
-                      <div className="flex items-center">
-                        <p className="text-sm text-muted-foreground capitalize font-mono font-semibold">
-                          {color}
-                        </p>
-                        <p className="ml-auto text-sm text-muted-foreground capitalize font-mono font-semibold">
-                          {colorCount}
-                        </p>
-                      </div>
-                      <div
-                        className="overflow-hidden aspect-square rounded relative font-mono font-semibold md:text-lg"
-                        key={color}
-                      >
-                        <Image
-                          alt="Hero"
-                          className="pointer-events-none z-0 w-full right-0 absolute bottom-0 [mask]"
-                          height={200}
-                          src={`/${color}.png`}
-                          width={200}
-                        />
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="flex flex-row md:flex-col items-center justify-center gap-2">
-                {colors.slice(3, 7).map((color) => {
-                  const colorCount = tokens[color]?.length ?? 0;
-                  return (
-                    <div
-                      key={color}
-                      className="w-[75px] flex flex-col justify-start"
-                    >
-                      <div className="flex items-center">
-                        <p className="text-sm text-muted-foreground capitalize font-mono font-semibold">
-                          {color}
-                        </p>
-                        <p className="ml-auto text-sm text-muted-foreground capitalize font-mono font-semibold">
-                          {colorCount}
-                        </p>
-                      </div>
-                      <div
-                        className="overflow-hidden aspect-square rounded relative font-mono font-semibold md:text-lg"
-                        key={color}
-                      >
-                        <Image
-                          alt="Hero"
-                          className="pointer-events-none z-0 w-full right-0 absolute bottom-0 [mask]"
-                          height={200}
-                          src={`/${color}.png`}
-                          width={200}
-                        />
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
             </div>
           </BuilderProvider>
         </div>

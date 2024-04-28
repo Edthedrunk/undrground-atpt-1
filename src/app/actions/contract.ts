@@ -40,7 +40,7 @@ export const getInventory = async (address: string = "") => {
     const inventory: { [key: string]: string[] } = {}
     await Promise.all(
         tokenIds.map(async (tokenId: string) => {
-            const tokentype: string = await contract.blokTypes(tokenId);
+            const tokentype: string = await contract.blokTypes(tokenId).then((type: string) => type.charAt(0).toUpperCase() + type.slice(1))
             if (!inventory[tokentype]) {
                 inventory[tokentype] = []
             }

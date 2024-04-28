@@ -7,29 +7,77 @@ interface ContextProps {
     [key: string]: string;
   };
   setLink: (link: string, color: string) => void;
+  currentLink: number;
+  nextLink: () => void;
+  prevLink: () => void;
+  resetLinkOrder: () => void;
+  editMode: boolean;
+  setEditMode: (editMode: boolean) => void;
+  inventory: {
+    [key: string]: string[];
+  };
 }
+
+const defaultOrder = Object.fromEntries(
+  [...Array(42)].map((i, index) => [index + 1, index == 0 ? "White" : "Black"])
+);
 
 export const BuilderContext = createContext<ContextProps>({
   linkOrder: {},
   setLink: function (link: string, color: string): void {
     throw new Error("Function not implemented.");
   },
+  currentLink: 1,
+  nextLink: function (): void {
+    throw new Error("Function not implemented.");
+  },
+  prevLink: function (): void {
+    throw new Error("Function not implemented.");
+  },
+  resetLinkOrder: function (): void {
+    throw new Error("Function not implemented.");
+  },
+  editMode: false,
+  setEditMode: function (editMode: boolean): void {
+    throw new Error("Function not implemented.");
+  },
+  inventory: {},
 });
 
 export const BuilderProvider = ({
   children,
+  inventory,
 }: {
   children: React.ReactNode;
+  inventory: { [key: string]: string[] };
 }) => {
-  // random color generator
-  const pickRandomColor = () => {
-    const colors = ["Black", "White", "Blue", "Lime", "Pink", "Orange", "Gold"];
-    return colors[Math.floor(Math.random() * colors.length)];
+  const _inventory = inventory;
+  const [editMode, setEditMode] = useState(false);
+  const [currentLink, setCurrentLink] = useState(1);
+  const [linkOrder, setLinkOrder] = useState<{ [key: string]: string }>(
+    defaultOrder
+  );
+
+  const nextLink = () => {
+    if (currentLink === 42) {
+      setCurrentLink(1);
+    } else {
+      setCurrentLink((prev) => prev + 1);
+    }
   };
 
-  const [linkOrder, setLinkOrder] = useState<{ [key: string]: string }>(
-    Object.fromEntries([...Array(42)].map((i, index) => [index + 1, pickRandomColor()]))
-  );
+  const prevLink = () => {
+    if (currentLink === 1) {
+      setCurrentLink(42);
+    } else {
+      setCurrentLink((prev) => prev - 1);
+    }
+  };
+
+  const resetLinkOrder = () => {
+    setLinkOrder(defaultOrder);
+    setCurrentLink(1);
+  };
 
   const setLink = (link: string, color: string) => {
     setLinkOrder({ ...linkOrder, [link]: color });
@@ -47,9 +95,16 @@ export const BuilderProvider = ({
     () => ({
       linkOrder,
       setLink,
+      currentLink,
+      nextLink,
+      prevLink,
+      resetLinkOrder,
+      editMode,
+      setEditMode,
+      inventory: _inventory,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [linkOrder]
+    [linkOrder, currentLink, editMode]
   );
 
   return (
