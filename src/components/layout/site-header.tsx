@@ -1,6 +1,7 @@
 import { site, navigation } from "@/config/site";
 import AuthSwap from "../auth/auth-swap";
 import Link from "next/link";
+import { buttonVariants } from "../ui/button";
 
 const SiteHeader = () => {
   return (
@@ -20,9 +21,7 @@ const SiteHeader = () => {
             </Link>
           ))}
         </div>
-        <div>
-          <AuthSwap />
-        </div>
+        <AuthSwap />
       </div>
     </header>
   );

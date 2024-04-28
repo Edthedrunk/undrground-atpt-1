@@ -15,7 +15,6 @@ const LoaderButton = ({
     <Button
       className={cn("flex gap-2 grow items-center", props.className)}
       disabled={isLoading}
-      variant="secondary"
       {...props}
     >
       <>
