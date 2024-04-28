@@ -56,6 +56,14 @@ const Inventory = () => {
                   width={200}
                 />
               </button>
+              <div className="flex items-center">
+                <p className="text-sm text-muted-foreground capitalize font-mono font-semibold">
+                  Used
+                </p>
+                <p className="ml-auto text-sm text-muted-foreground capitalize font-mono font-semibold">
+                  {Object.values(linkOrder).filter((c) => c === color).length}
+                </p>
+              </div>
             </div>
           );
         })}

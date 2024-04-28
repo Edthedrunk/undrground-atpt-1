@@ -16,8 +16,7 @@ const Controls = () => {
 };
 
 const EditMode = () => {
-  const { setEditMode, nextLink, prevLink, resetLinkOrder } =
-    useBuilderContext();
+  const { setEditMode, resetLinkOrder } = useBuilderContext();
 
   return (
     <div className="z-10 flex gap-2 items-center absolute bottom-4 left-1/2 -translate-x-1/2">
