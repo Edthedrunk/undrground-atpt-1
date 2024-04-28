@@ -23,15 +23,15 @@ const EditMode = () => {
     <div className="flex flex-col sm:flex-row gap-2 items-center">
       <div className="flex sm:hidden w-full gap-2">
         <Button className="w-full" onClick={nextLink}>
-          <ArrowLeftCircle />
+          <ArrowLeftCircle className="mr-auto"/>
         </Button>
         <Button className="w-full" onClick={prevLink}>
-          <ArrowRightCircle />
+          <ArrowRightCircle className="ml-auto"/>
         </Button>
       </div>
       <div className="flex w-full gap-2">
         <Button className="w-full hidden sm:block" onClick={nextLink}>
-          <ArrowLeftCircle />
+          <ArrowLeftCircle className="mr-auto"/>
         </Button>
         <Button
           className="w-full sm:w-auto flex gap-2 items-center"
@@ -49,8 +49,8 @@ const EditMode = () => {
           <CheckCircle className="size-5" />
           MINT
         </Button>
-        <Button className="w-full hidden md:block" onClick={prevLink}>
-          <ArrowRightCircle />
+        <Button className="w-full hidden sm:block" onClick={prevLink}>
+          <ArrowRightCircle className="ml-auto"/>
         </Button>
       </div>
     </div>
