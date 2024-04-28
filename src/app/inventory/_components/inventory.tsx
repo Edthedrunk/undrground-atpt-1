@@ -9,39 +9,25 @@ import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 const colors = ["Black", "White", "Orange", "Lime", "Blue", "Gold", "Pink"];
 
 const Inventory = () => {
-  const {
-    editMode,
-    linkOrder,
-    setLink,
-    currentLink,
-    inventory,
-    nextLink,
-    prevLink,
-  } = useBuilderContext();
+  const { editMode, linkOrder, setLink, currentLink, inventory, nextLink } =
+    useBuilderContext();
   return (
-    <div className="p-2 bottom-14 sm:top-0 absolute w-full z-10 flex flex-col items-center gap-2">
-      <div className="flex gap-2 w-full sm:mx-auto justify-center">
+    <div className="">
+      <div className="flex gap-2 sm:mx-auto justify-center">
         {colors.map((color) => {
           const colorCount = inventory[color]?.length ?? 0;
           return (
-            <div
-              key={color}
-              className="w-full max-w-[60px] flex flex-col justify-start"
-            >
-              <div className="hidden sm:flex items-center text-foreground md:text-muted-foreground">
-                <p className="text-xs sm:text-sm capitalize font-mono font-semibold">
-                  {color}
-                </p>
-                <p className="ml-auto text-sm  capitalize font-mono font-semibold">
-                  {colorCount}
-                </p>
+            <div key={color} className="w-full flex flex-col justify-start">
+              <div className="text-sm capitalize font-mono font-semibold hidden sm:flex items-center text-foreground md:text-foreground">
+                <p className="">{color}</p>
+                <p className="ml-auto">{colorCount}</p>
               </div>
               <button
                 disabled={!editMode}
                 className={cn(
                   "grow sm:grow-0 overflow-hidden aspect-square rounded relative font-mono font-semibold md:text-lg",
                   {
-                    "border-[2px] border-foreground md:border-muted-foreground":
+                    "border-[2px] border-foreground":
                       color === linkOrder[currentLink] && editMode,
                   }
                 )}
@@ -61,9 +47,9 @@ const Inventory = () => {
               </button>
               <div
                 className={cn(
-                  "hidden sm:flex items-center text-muted-foreground font-mono font-semibold",
+                  "hidden sm:flex items-center text-foreground font-mono font-semibold",
                   {
-                    "text-red-500 font-black":
+                    "text-red-700 font-black":
                       Object.values(linkOrder).filter((c) => c === color)
                         .length > inventory[color]?.length,
                   }
@@ -78,16 +64,6 @@ const Inventory = () => {
           );
         })}
       </div>
-      {editMode && (
-        <div className="w-full flex gap-2 items-center justify-between sm:justify-center">
-          <Button onClick={nextLink}>
-            <ArrowLeftCircle />
-          </Button>
-          <Button onClick={prevLink}>
-            <ArrowRightCircle />
-          </Button>
-        </div>
-      )}
     </div>
   );
 };

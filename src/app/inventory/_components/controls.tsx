@@ -2,7 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { useBuilderContext } from "./builder-context";
-import { CheckCircle, Undo2 } from "lucide-react";
+import {
+  ArrowLeftCircle,
+  ArrowRightCircle,
+  CheckCircle,
+  Undo2,
+} from "lucide-react";
 
 const Controls = () => {
   const { editMode } = useBuilderContext();
@@ -11,23 +16,43 @@ const Controls = () => {
 };
 
 const EditMode = () => {
-  const { setEditMode, resetLinkOrder } = useBuilderContext();
+  const { setEditMode, resetLinkOrder, nextLink, prevLink } =
+    useBuilderContext();
 
   return (
-    <div className="w-full px-4 z-10 flex gap-2 justify-center items-center absolute bottom-4 left-1/2 -translate-x-1/2">
-      <Button className="w-full sm:w-auto flex gap-2 items-center" onClick={resetLinkOrder}>
-        <Undo2 className="size-5" />
-        RESET
-      </Button>
-      <Button onClick={() => setEditMode(!true)}>VIEW MODE</Button>
-      <Button
-        disabled
-        className="w-full sm:w-auto flex gap-2 items-center"
-        onClick={resetLinkOrder}
-      >
-        <CheckCircle className="size-5" />
-        MINT
-      </Button>
+    <div className="flex flex-col sm:flex-row gap-2 items-center">
+      <div className="flex sm:hidden w-full gap-2">
+        <Button className="w-full" onClick={nextLink}>
+          <ArrowLeftCircle />
+        </Button>
+        <Button className="w-full" onClick={prevLink}>
+          <ArrowRightCircle />
+        </Button>
+      </div>
+      <div className="flex w-full gap-2">
+        <Button className="w-full hidden sm:block" onClick={nextLink}>
+          <ArrowLeftCircle />
+        </Button>
+        <Button
+          className="w-full sm:w-auto flex gap-2 items-center"
+          onClick={resetLinkOrder}
+        >
+          <Undo2 className="size-5" />
+          RESET
+        </Button>
+        <Button onClick={() => setEditMode(!true)}>VIEW MODE</Button>
+        <Button
+          disabled
+          className="w-full sm:w-auto flex gap-2 items-center"
+          onClick={resetLinkOrder}
+        >
+          <CheckCircle className="size-5" />
+          MINT
+        </Button>
+        <Button className="w-full hidden md:block" onClick={prevLink}>
+          <ArrowRightCircle />
+        </Button>
+      </div>
     </div>
   );
 };
@@ -35,7 +60,7 @@ const EditMode = () => {
 const ViewMode = () => {
   const { setEditMode } = useBuilderContext();
   return (
-    <div className="z-10 flex gap-2 items-center absolute bottom-4 left-1/2 -translate-x-1/2">
+    <div className="w-full flex justify-center">
       <Button onClick={() => setEditMode(!false)}>EDIT MODE</Button>
     </div>
   );

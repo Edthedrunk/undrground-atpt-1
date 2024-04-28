@@ -29,7 +29,7 @@ export function Numbers(props: JSX.IntrinsicElements["group"]) {
     }
   };
   return (
-    <group {...props} dispose={null} position={[0, 0.5, 0]}>
+    <group {...props} dispose={null} position={[0, 1.5, 0]}>
       {Object.values(linkOrder).map((value, i) => (
         <mesh key={i}>
           <group rotation={[0, (-2 * Math.PI * i) / 42, 0]}>

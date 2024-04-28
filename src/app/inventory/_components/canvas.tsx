@@ -17,8 +17,7 @@ export default function Canvas() {
     <Rcanvas
       // ref={_renderRef}
       gl={{ preserveDrawingBuffer: true }}
-      camera={{ position: [0, 1.5, 4] }}
-      className="pb-32 sm:pb-0"
+      camera={{ position: [0, 2.5, 4] }}
 
       // style={{
       //   width: 1000,
@@ -48,7 +47,7 @@ export default function Canvas() {
         ]}
         intensity={2}
       />
-      <ContactShadows position={[0, 0, 0]} opacity={0.75} blur={3} />
+      <ContactShadows opacity={0.75} blur={3} />
       <Environment preset="city" />
     </Rcanvas>
   );
