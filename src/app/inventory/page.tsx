@@ -71,7 +71,7 @@ export default async function InventoryPage() {
       >
         <div className="h-full p-4 gap-4 relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-center">
           <BuilderProvider inventory={tokens}>
-            <div className="relative aspect-square bg-gradient-to-b from-background to-muted-foreground rounded-md drop-shadow w-full max-w-[800px]">
+            <div className="min-h-[800px] relative aspect-square bg-gradient-to-b from-background to-muted-foreground rounded-md drop-shadow w-full max-w-[800px]">
               <Controls />
               <Inventory />
               <Canvas />

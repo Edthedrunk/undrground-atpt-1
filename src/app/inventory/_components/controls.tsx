@@ -2,12 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useBuilderContext } from "./builder-context";
-import {
-  ArrowLeftCircle,
-  ArrowRightCircle,
-  CheckCircle,
-  Undo2,
-} from "lucide-react";
+import { CheckCircle, Undo2 } from "lucide-react";
 
 const Controls = () => {
   const { editMode } = useBuilderContext();
@@ -19,15 +14,15 @@ const EditMode = () => {
   const { setEditMode, resetLinkOrder } = useBuilderContext();
 
   return (
-    <div className="z-10 flex gap-2 items-center absolute bottom-4 left-1/2 -translate-x-1/2">
-      <Button className="flex gap-2 items-center" onClick={resetLinkOrder}>
+    <div className="w-full px-4 z-10 flex gap-2 justify-center items-center absolute bottom-4 left-1/2 -translate-x-1/2">
+      <Button className="w-full sm:w-auto flex gap-2 items-center" onClick={resetLinkOrder}>
         <Undo2 className="size-5" />
         RESET
       </Button>
       <Button onClick={() => setEditMode(!true)}>VIEW MODE</Button>
       <Button
         disabled
-        className="flex gap-2 items-center"
+        className="w-full sm:w-auto flex gap-2 items-center"
         onClick={resetLinkOrder}
       >
         <CheckCircle className="size-5" />

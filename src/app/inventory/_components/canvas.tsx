@@ -18,6 +18,7 @@ export default function Canvas() {
       // ref={_renderRef}
       gl={{ preserveDrawingBuffer: true }}
       camera={{ position: [0, 1.5, 4] }}
+      className="pb-32 sm:pb-0"
 
       // style={{
       //   width: 1000,
