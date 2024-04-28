@@ -1,14 +1,35 @@
 "use client";
 
+import { useEffect } from "react";
 import { useBuilderContext } from "./builder-context";
 
 const Keybinds = () => {
-  const { editMode } = useBuilderContext();
+  const { editMode, nextLink, prevLink } = useBuilderContext();
 
   // correct icon for os
   const isMac =
     typeof navigator !== "undefined" &&
     /Mac|iPod|iPhone|iPad/.test(navigator.platform);
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight" && (e.metaKey || e.ctrlKey) && editMode) {
+        e.preventDefault();
+        prevLink();
+      } else if (
+        e.key === "ArrowLeft" &&
+        (e.metaKey || e.ctrlKey) &&
+        editMode
+      ) {
+        e.preventDefault();
+        nextLink();
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editMode]);
 
   if (!editMode) return null;
 

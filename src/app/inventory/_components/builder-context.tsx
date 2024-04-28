@@ -91,7 +91,15 @@ export const BuilderProvider = ({
       setLinkOrder(defaultOrder);
     }
     setCurrentLink(1);
-    setRotation(0);
+    setRotation((prev) => {
+      if (currentLink >= 22) {
+        console.log(currentLink);
+        return prev + ((2 * Math.PI) / 42) * (43 - currentLink);
+      } else {
+        console.log(currentLink);
+        return prev - ((2 * Math.PI) / 42) * (currentLink - 1);
+      }
+    });
   };
 
   const setLink = (link: string, color: string) => {

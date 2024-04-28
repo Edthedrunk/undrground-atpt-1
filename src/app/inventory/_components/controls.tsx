@@ -20,26 +20,6 @@ const EditMode = () => {
   const { editMode, setEditMode, resetLinkOrder, nextLink, prevLink } =
     useBuilderContext();
 
-  useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" && (e.metaKey || e.ctrlKey) && editMode) {
-        e.preventDefault();
-        prevLink();
-      } else if (
-        e.key === "ArrowLeft" &&
-        (e.metaKey || e.ctrlKey) &&
-        editMode
-      ) {
-        e.preventDefault();
-        nextLink();
-      }
-    };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [editMode]);
-
   return (
     <div className="flex flex-col sm:flex-row gap-2 items-center">
       <div className="flex sm:hidden w-full gap-2">

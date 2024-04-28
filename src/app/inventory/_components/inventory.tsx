@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 const colors = ["Black", "White", "Orange", "Lime", "Blue", "Gold", "Pink"];
 
 const Inventory = () => {
-  const [ctrShift, setCtrShift] = useState(false);
   const {
     editMode,
     linkOrder,
@@ -18,18 +17,6 @@ const Inventory = () => {
     resetLinkOrder,
     setLink,
   } = useBuilderContext();
-
-  useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "Shift" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setCtrShift((open) => !open);
-      }
-    };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
 
   return (
     <div className="w-full flex gap-2 sm:mx-auto justify-center">
@@ -51,8 +38,8 @@ const Inventory = () => {
                 }
               )}
               key={color}
-              onClick={() => {
-                if (ctrShift) {
+              onClick={(e) => {
+                if (e.shiftKey && e.metaKey) {
                   resetLinkOrder(color);
                 } else {
                   setLink(`${currentLink}`, color);
