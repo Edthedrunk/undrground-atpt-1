@@ -56,11 +56,18 @@ const Inventory = () => {
                   width={200}
                 />
               </button>
-              <div className="flex items-center">
-                <p className="text-sm text-muted-foreground capitalize font-mono font-semibold">
-                  Used
-                </p>
-                <p className="ml-auto text-sm text-muted-foreground capitalize font-mono font-semibold">
+              <div
+                className={cn(
+                  "flex items-center text-muted-foreground font-mono font-semibold",
+                  {
+                    "text-red-500 font-black":
+                      Object.values(linkOrder).filter((c) => c === color)
+                        .length > inventory[color]?.length,
+                  }
+                )}
+              >
+                <p className="text-sm capitalize">Used</p>
+                <p className="ml-auto text-sm capitalize">
                   {Object.values(linkOrder).filter((c) => c === color).length}
                 </p>
               </div>
