@@ -7,6 +7,7 @@ import { ArrowRight, Loader2 } from "lucide-react";
 import { BuilderProvider } from "./_components/builder-context";
 import { Controls } from "./_components/controls";
 import { Inventory } from "./_components/inventory";
+import { Keybinds } from "./_components/keybinds";
 
 const Canvas = dynamic(
   () => import("./_components/canvas").then((mod) => mod.default),
@@ -72,6 +73,7 @@ export default async function InventoryPage() {
         <div className="h-full p-4 gap-4 relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-center">
           <BuilderProvider inventory={tokens}>
             <div className="min-h-[800px] relative aspect-square bg-gradient-to-b from-background to-muted-foreground rounded-md drop-shadow w-full max-w-[800px]">
+              <Keybinds />
               <div className="z-10 p-4 w-full  bottom-0 absolute flex flex-col gap-2">
                 <Inventory />
                 <Controls />

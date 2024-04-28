@@ -12,7 +12,7 @@ import { Numbers } from "./numbers";
 import { DirectionalLight } from "three";
 
 export default function Canvas() {
-  const { currentLink, editMode } = useBuilderContext();
+  const { currentLink, editMode, rotation } = useBuilderContext();
   return (
     <Rcanvas
       // ref={_renderRef}
@@ -28,11 +28,7 @@ export default function Canvas() {
       <PresentationControls
         global
         polar={[-0.4, 0.1]}
-        rotation={[
-          currentLink % 2 === 1 ? 0 : 0.2,
-          (2 * Math.PI * (currentLink - 1)) / 42,
-          0,
-        ]}
+        rotation={[currentLink % 2 === 1 ? 0 : 0.2, rotation, 0]}
         snap={editMode ? { mass: 2, tension: 100 } : false}
       >
         <Numbers />

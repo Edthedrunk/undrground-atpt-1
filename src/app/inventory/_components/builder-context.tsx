@@ -10,12 +10,13 @@ interface ContextProps {
   currentLink: number;
   nextLink: () => void;
   prevLink: () => void;
-  resetLinkOrder: () => void;
+  resetLinkOrder: (color?: string) => void;
   editMode: boolean;
   setEditMode: (editMode: boolean) => void;
   inventory: {
     [key: string]: string[];
   };
+  rotation: number;
 }
 
 const defaultOrder = Object.fromEntries(
@@ -42,6 +43,7 @@ export const BuilderContext = createContext<ContextProps>({
     throw new Error("Function not implemented.");
   },
   inventory: {},
+  rotation: (2 * Math.PI * 0) / 42,
 });
 
 export const BuilderProvider = ({
@@ -57,26 +59,39 @@ export const BuilderProvider = ({
   const [linkOrder, setLinkOrder] = useState<{ [key: string]: string }>(
     defaultOrder
   );
+  const [rotation, setRotation] = useState(0);
 
   const nextLink = () => {
-    if (currentLink === 42) {
-      setCurrentLink(1);
-    } else {
-      setCurrentLink((prev) => prev + 1);
-    }
+    setCurrentLink((prev) => {
+      if (prev === 42) {
+        return 1;
+      }
+      return prev + 1;
+    });
+
+    setRotation((prev) => prev + (2 * Math.PI) / 42);
   };
 
   const prevLink = () => {
-    if (currentLink === 1) {
-      setCurrentLink(42);
-    } else {
-      setCurrentLink((prev) => prev - 1);
-    }
+    setCurrentLink((prev) => {
+      if (prev === 1) {
+        return 42;
+      }
+      return prev - 1;
+    });
+    setRotation((prev) => prev - (2 * Math.PI) / 42);
   };
 
-  const resetLinkOrder = () => {
-    setLinkOrder(defaultOrder);
+  const resetLinkOrder = (color?: string | undefined) => {
+    if (color) {
+      setLinkOrder(
+        Object.fromEntries([...Array(42)].map((i, index) => [index + 1, color]))
+      );
+    } else {
+      setLinkOrder(defaultOrder);
+    }
     setCurrentLink(1);
+    setRotation(0);
   };
 
   const setLink = (link: string, color: string) => {
@@ -102,9 +117,10 @@ export const BuilderProvider = ({
       editMode,
       setEditMode,
       inventory: _inventory,
+      rotation,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [linkOrder, currentLink, editMode]
+    [linkOrder, currentLink, editMode, nextLink, prevLink, rotation]
   );
 
   return (
