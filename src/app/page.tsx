@@ -65,8 +65,8 @@ export default function Home() {
             <div className="h-4" />
             <p className="text-muted-foreground font-mono text-sm md:text-base">
               The process of minting your Bloks is simple, connect your
-              universal profile. Click mint you will be redirected to the
-              minting page and from there you can select how many Bloks you want
+              universal profile. Click mint and you will be redirected to the
+              minting page, from there you can select how many Bloks you want
               and click mint! Each Blok will be assigned a random color from the
               available colors left in supply, when the transaction completes
               you will be redirected to the inventory page where you can see the
