@@ -71,7 +71,7 @@ export default async function InventoryPage() {
       >
         <div className="h-full p-4 gap-4 relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-center">
           <BuilderProvider>
-            <div className="aspect-square md:aspect-auto bg-gradient-to-b from-[#cccccc] to-primary rounded-md drop-shadow sm:h-[300px] md:h-full max-h-[1200px] w-full max-w-[75vw] lg-[max-w-800px]">
+            <div className="aspect-square md:aspect-auto bg-gradient-to-b from-background to-muted-foreground rounded-md drop-shadow sm:h-[300px] md:h-full max-h-[1200px] w-full max-w-[75vw] lg-[max-w-800px]">
               <Canvas />
             </div>
             <div className="flex flex-col sm:flex-row gap-2">
