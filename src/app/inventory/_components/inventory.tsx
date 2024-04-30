@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useBuilderContext } from "./builder-context";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
 
 const colors = ["Black", "White", "Orange", "Lime", "Blue", "Gold", "Pink"];
 
@@ -39,7 +38,7 @@ const Inventory = () => {
               )}
               key={color}
               onClick={(e) => {
-                if (e.shiftKey && e.metaKey) {
+                if (e.shiftKey && (e.metaKey || e.ctrlKey)) {
                   resetLinkOrder(color);
                 } else {
                   setLink(`${currentLink}`, color);

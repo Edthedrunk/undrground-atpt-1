@@ -93,10 +93,8 @@ export const BuilderProvider = ({
     setCurrentLink(1);
     setRotation((prev) => {
       if (currentLink >= 22) {
-        console.log(currentLink);
         return prev + ((2 * Math.PI) / 42) * (43 - currentLink);
       } else {
-        console.log(currentLink);
         return prev - ((2 * Math.PI) / 42) * (currentLink - 1);
       }
     });
