@@ -23,7 +23,7 @@ export async function GET(req: Request) {
         }
 
         if (!browser) {
-            return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+            return NextResponse.json({ error: "Something went wrong (Browser)" }, { status: 500 });
         }
 
         const page = await browser.newPage();
@@ -34,7 +34,7 @@ export async function GET(req: Request) {
         await browser.close();
 
         if (!screenshot) {
-            return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+            return NextResponse.json({ error: "Something went wrong (Screenshot)" }, { status: 500 });
         }
 
         const response = new NextResponse(screenshot)
@@ -43,7 +43,7 @@ export async function GET(req: Request) {
         return response;
     } catch (error) {
         console.log(error);
-        return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+        return NextResponse.json({ error: "Something went wrong (Try Catch)" }, { status: 500 });
     }
 
 }
