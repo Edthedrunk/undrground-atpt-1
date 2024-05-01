@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    serverComponentsExternalPackages: ["puppeteer-core", "@sparticuz/chromium"],
+    serverComponentsExternalPackages: [
+      "playwright-core",
+      "playwright-aws-lambda",
+    ],
   },
 };
 

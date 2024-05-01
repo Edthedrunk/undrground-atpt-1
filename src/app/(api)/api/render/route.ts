@@ -1,12 +1,5 @@
-import { Browser } from 'puppeteer';
 import { NextResponse } from "next/server";
-
-const getAbsoluteURL = (path: string) => {
-    if (process.env.NODE_ENV === "development") {
-        return `http://localhost:3001${path}`;
-    }
-    return `https://${process.env.VERCEL_URL}${path}`;
-};
+import { Browser } from 'playwright-core';
 
 export async function GET(req: Request) {
     const searchParams = new URL(req.url).searchParams;
@@ -19,19 +12,14 @@ export async function GET(req: Request) {
 
 
     try {
-        let browser: Browser | undefined | null
-        if (process.env.NODE_ENV !== 'development') {
-            const chromium = require('@sparticuz/chromium')
-            const puppeteer = require('puppeteer-core')
-            browser = await puppeteer.launch({
-                args: chromium.args,
-                defaultViewport: chromium.defaultViewport,
-                executablePath: await chromium.executablePath(),
-                headless: chromium.headless,
-            })
+        let browser: Browser | undefined;
+
+        if (process.env.VERCEL_ENV === "production") {
+            const playwright = require("playwright-aws-lambda");
+            browser = await playwright.launchChromium({ headless: true });
         } else {
-            const puppeteer = require('puppeteer')
-            browser = await puppeteer.launch({ headless: 'new' })
+            const playwright = require("playwright-core");
+            browser = await playwright.chromium.launch({ headless: true });
         }
 
         if (!browser) {
@@ -39,10 +27,10 @@ export async function GET(req: Request) {
         }
 
         const page = await browser.newPage();
-        await page.setViewport({ width: 1000, height: 1000 });
-        await page.goto(getAbsoluteURL(`/api/render/page?seed=${seed}`));
+        await page.setViewportSize({ width: 1000, height: 1000 });
+        await page.goto(`https://www.blokcharms.com/api/render/page?seed=${seed}`);
         await page.waitForFunction('window.status === "ready"');
-        const screenshot = await page.screenshot();
+        const screenshot = await page.screenshot({ type: "jpeg" });
         await browser.close();
 
         if (!screenshot) {
