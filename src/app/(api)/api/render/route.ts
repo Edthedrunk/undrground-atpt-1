@@ -1,5 +1,6 @@
-import puppeteer from 'puppeteer';
-let chrome = {};
+import puppeteerDev from 'puppeteer';
+import puppeteerProd from 'puppeteer-core';
+import chromium from '@sparticuz/chromium'
 import { NextResponse } from "next/server";
 
 const getAbsoluteURL = (path: string) => {
@@ -22,15 +23,14 @@ export async function GET(req: Request) {
     try {
         let browser;
         if (process.env.NODE_ENV === "production") {
-            const chrome = require("chrome-aws-lambda");
-            browser = await chrome.puppeteer.launch({
-                args: chrome.args,
-                executablePath: await chrome.executablePath,
-                headless: chrome.headless,
-                ignoreHTTPSErrors: true,
+            browser = await puppeteerProd.launch({
+                args: chromium.args,
+                defaultViewport: chromium.defaultViewport,
+                executablePath: await chromium.executablePath(),
+                headless: true,
             });
         } else {
-            browser = await puppeteer.launch({
+            browser = await puppeteerDev.launch({
                 headless: true,
             });
         }
