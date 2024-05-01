@@ -1,5 +1,5 @@
-import { getInventory } from "../actions/contract";
-import { getSession } from "../actions/session";
+import { getInventory } from "../../actions/contract";
+import { getSession } from "../../actions/session";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import dynamic from "next/dynamic";

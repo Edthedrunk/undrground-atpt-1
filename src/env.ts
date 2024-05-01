@@ -12,10 +12,10 @@ export const env = createEnv({
   },
   server: {
     SESSION_PASS: z.string().min(32),
-    // IPFS_KEY: z.string(),
+    IPFS_KEY: z.string(),
   },
   runtimeEnv: {
-    // IPFS_KEY: process.env.IPFS_KEY,
+    IPFS_KEY: process.env.IPFS_KEY,
     SESSION_PASS: process.env.SESSION_PASS,
     NEXT_PUBLIC_CONTRACT_ADDRESS: process.env
       .NEXT_PUBLIC_CONTRACT_ADDRESS,

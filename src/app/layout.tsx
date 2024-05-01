@@ -3,10 +3,7 @@ import { Inter } from "next/font/google";
 import "@/style/globals.css";
 import { site } from "@/config/site";
 import { env } from "@/env";
-import { SiteHeader } from "@/components/layout/site-header";
 import { cn } from "@/lib/utils";
-import { Toaster } from "@/components/ui/sonner";
-import { NetworkLock } from "@/components/auth/network-lock";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -36,12 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("bg-primary", inter.className)}>
-        <SiteHeader />
-        <main>{children}</main>
-        <Toaster position="top-center" />
-        <NetworkLock />
-      </body>
+      <body className={cn("bg-primary", inter.className)}> {children}</body>
     </html>
   );
 }

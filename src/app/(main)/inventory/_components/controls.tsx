@@ -8,7 +8,6 @@ import {
   CheckCircle,
   Undo2,
 } from "lucide-react";
-import { useEffect } from "react";
 
 const Controls = () => {
   const { editMode } = useBuilderContext();
@@ -17,7 +16,7 @@ const Controls = () => {
 };
 
 const EditMode = () => {
-  const { editMode, setEditMode, resetLinkOrder, nextLink, prevLink } =
+  const { setEditMode, resetLinkOrder, nextLink, prevLink } =
     useBuilderContext();
 
   return (
@@ -42,9 +41,12 @@ const EditMode = () => {
           RESET
         </Button>
         <Button onClick={() => setEditMode(!true)}>VIEW MODE</Button>
-        <Button disabled className="w-full sm:w-auto flex gap-2 items-center">
+        <Button
+          disabled={true}
+          className="w-full sm:w-auto flex gap-2 items-center"
+        >
           <CheckCircle className="size-5" />
-          MINT
+          CREATE
         </Button>
         <Button className="w-full hidden sm:block" onClick={prevLink}>
           <ArrowRightCircle className="ml-auto" />

@@ -104,14 +104,6 @@ export const BuilderProvider = ({
     setLinkOrder({ ...linkOrder, [link]: color });
   };
 
-  // const getDataURL = () => {
-  //   if (!_renderRef.current) {
-  //     return undefined;
-  //   }
-  //   const url = _renderRef.current.toDataURL("image/png");
-  //   return url;
-  // };
-
   const contextValue = useMemo(
     () => ({
       linkOrder,
