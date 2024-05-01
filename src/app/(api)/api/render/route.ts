@@ -42,6 +42,10 @@ export async function GET(req: Request) {
         const screenshot = await page.screenshot();
         await browser.close();
 
+        if (!screenshot) {
+            return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+        }
+
         const response = new NextResponse(screenshot)
         response.headers.set("content-type", "image/png");
 
