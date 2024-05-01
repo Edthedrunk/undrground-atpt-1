@@ -1,5 +1,5 @@
-import puppeteer from 'puppeteer-core';
-import chrome from "chrome-aws-lambda";
+import puppeteer from 'puppeteer';
+let chrome = {};
 import { NextResponse } from "next/server";
 
 const getAbsoluteURL = (path: string) => {
@@ -22,9 +22,9 @@ export async function GET(req: Request) {
     try {
         let browser;
         if (process.env.NODE_ENV === "production") {
-            browser = await puppeteer.launch({
-                args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
-                defaultViewport: chrome.defaultViewport,
+            const chrome = require("chrome-aws-lambda");
+            browser = await chrome.puppeteer.launch({
+                args: chrome.args,
                 executablePath: await chrome.executablePath,
                 headless: chrome.headless,
                 ignoreHTTPSErrors: true,
