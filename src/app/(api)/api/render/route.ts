@@ -1,6 +1,4 @@
-import puppeteerDev from 'puppeteer';
-import puppeteerProd from 'puppeteer-core';
-import chromium from '@sparticuz/chromium'
+import { Browser } from 'puppeteer';
 import { NextResponse } from "next/server";
 
 const getAbsoluteURL = (path: string) => {
@@ -21,18 +19,23 @@ export async function GET(req: Request) {
 
 
     try {
-        let browser;
-        if (process.env.NODE_ENV === "production") {
-            browser = await puppeteerProd.launch({
+        let browser: Browser | undefined | null
+        if (process.env.NODE_ENV !== 'development') {
+            const chromium = require('@sparticuz/chromium')
+            const puppeteer = require('puppeteer-core')
+            browser = await puppeteer.launch({
                 args: chromium.args,
                 defaultViewport: chromium.defaultViewport,
                 executablePath: await chromium.executablePath(),
-                headless: true,
-            });
+                headless: chromium.headless,
+            })
         } else {
-            browser = await puppeteerDev.launch({
-                headless: true,
-            });
+            const puppeteer = require('puppeteer')
+            browser = await puppeteer.launch({ headless: 'new' })
+        }
+
+        if (!browser) {
+            return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
         }
 
         const page = await browser.newPage();

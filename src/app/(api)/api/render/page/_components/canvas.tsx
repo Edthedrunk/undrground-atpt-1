@@ -3,6 +3,7 @@
 import { ContactShadows, Environment } from "@react-three/drei";
 import { Canvas as Rcanvas } from "@react-three/fiber";
 import { BlokModel } from "./blok-model";
+import { Suspense } from "react";
 
 export default function Canvas({ seed }: { seed: string }) {
   const colorMap: Record<string, string> = {
@@ -30,18 +31,20 @@ export default function Canvas({ seed }: { seed: string }) {
       }}
       className="bg-gradient-to-b from-background to-muted-foreground"
     >
-      <group dispose={null} position={[0, 0.5, 0]}>
-        {links.map((value, i) => (
-          <BlokModel
-            key={i}
-            rotation={[0, (-2 * Math.PI * i) / 42, 0]}
-            flipped={i % 2 === 1}
-            color={value as any}
-          />
-        ))}
-      </group>
-      <ContactShadows opacity={0.75} blur={3} />
-      <Environment preset="city" />
+      <Suspense fallback={null}>
+        <group dispose={null} position={[0, 0.5, 0]}>
+          {links.map((value, i) => (
+            <BlokModel
+              key={i}
+              rotation={[0, (-2 * Math.PI * i) / 42, 0]}
+              flipped={i % 2 === 1}
+              color={value as any}
+            />
+          ))}
+        </group>
+        <ContactShadows opacity={0.75} blur={3} />
+        <Environment preset="city" />
+      </Suspense>
     </Rcanvas>
   );
 }
