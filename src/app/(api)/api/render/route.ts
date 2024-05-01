@@ -1,4 +1,5 @@
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
+import chrome from "chrome-aws-lambda";
 import { NextResponse } from "next/server";
 
 const getAbsoluteURL = (path: string) => {
@@ -17,10 +18,23 @@ export async function GET(req: Request) {
     };
 
 
+
     try {
-        const browser = await puppeteer.launch({
-            headless: true,
-        });
+        let browser;
+        if (process.env.NODE_ENV === "production") {
+            browser = await puppeteer.launch({
+                args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
+                defaultViewport: chrome.defaultViewport,
+                executablePath: await chrome.executablePath,
+                headless: chrome.headless,
+                ignoreHTTPSErrors: true,
+            });
+        } else {
+            browser = await puppeteer.launch({
+                headless: true,
+            });
+        }
+
         const page = await browser.newPage();
         await page.setViewport({ width: 1000, height: 1000 });
         await page.goto(getAbsoluteURL(`/api/render/page?seed=${seed}`));

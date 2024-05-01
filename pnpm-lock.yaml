@@ -35,6 +35,9 @@ importers:
       '@types/three':
         specifier: ^0.163.0
         version: 0.163.0
+      chrome-aws-lambda:
+        specifier: ^10.1.0
+        version: 10.1.0(puppeteer-core@22.7.1(bufferutil@4.0.8)(utf-8-validate@5.0.10))
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -62,6 +65,9 @@ importers:
       puppeteer:
         specifier: ^22.7.1
         version: 22.7.1(bufferutil@4.0.8)(typescript@5.4.3)(utf-8-validate@5.0.10)
+      puppeteer-core:
+        specifier: ^22.7.1
+        version: 22.7.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       react:
         specifier: ^18
         version: 18.2.0
@@ -1566,6 +1572,12 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
 
+  chrome-aws-lambda@10.1.0:
+    resolution: {integrity: sha512-NZQVf+J4kqG4sVhRm3WNmOfzY0OtTSm+S8rg77pwePa9RCYHzhnzRs8YvNI6L9tALIW6RpmefWiPURt3vURXcw==}
+    engines: {node: '>= 10.16'}
+    peerDependencies:
+      puppeteer-core: ^10.1.0
+
   chromium-bidi@0.5.19:
     resolution: {integrity: sha512-UA6zL77b7RYCjJkZBsZ0wlvCTD+jTjllZ8f6wdO4buevXgTZYjV+XLB9CiEa2OuuTGGTLnI7eN9I60YxuALGQg==}
     peerDependencies:
@@ -2656,6 +2668,13 @@ packages:
 
   keyvaluestorage-interface@1.0.0:
     resolution: {integrity: sha512-8t6Q3TclQ4uZynJY9IGr2+SsIGwK9JHcO6ootkHCGA0CrQCRy+VkouYNO2xicET6b9al7QKzpebNow+gkpCL8g==}
+
+  lambdafs@2.1.1:
+    resolution: {integrity: sha512-x5k8JcoJWkWLvCVBzrl4pzvkEHSgSBqFjg3Dpsc4AcTMq7oUMym4cL/gRTZ6VM4mUMY+M0dIbQ+V1c1tsqqanQ==}
+    engines: {node: '>= 10.16'}
+    hasBin: true
+    bundledDependencies:
+      - tar-fs
 
   language-subtag-registry@0.3.22:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
@@ -6122,6 +6141,11 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
+  chrome-aws-lambda@10.1.0(puppeteer-core@22.7.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)):
+    dependencies:
+      lambdafs: 2.1.1
+      puppeteer-core: 22.7.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+
   chromium-bidi@0.5.19(devtools-protocol@0.0.1273771):
     dependencies:
       devtools-protocol: 0.0.1273771
@@ -7451,6 +7475,8 @@ snapshots:
       json-buffer: 3.0.1
 
   keyvaluestorage-interface@1.0.0: {}
+
+  lambdafs@2.1.1: {}
 
   language-subtag-registry@0.3.22: {}
 
