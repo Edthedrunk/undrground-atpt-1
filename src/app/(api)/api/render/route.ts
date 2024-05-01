@@ -16,7 +16,7 @@ export async function GET(req: Request) {
 
         if (process.env.VERCEL_ENV === "production") {
             const playwright = require("playwright-aws-lambda");
-            browser = await playwright.launchChromium({ headless: true });
+            browser = await playwright.chromium.launch({ headless: true });
         } else {
             const playwright = require("playwright-core");
             browser = await playwright.chromium.launch({ headless: true });
@@ -43,7 +43,7 @@ export async function GET(req: Request) {
         return response;
     } catch (error) {
         console.log(error);
-        return NextResponse.json({ error: "Something went wrong (Try Catch)" }, { status: 500 });
+        return NextResponse.json({ error }, { status: 500 });
     }
 
 }
