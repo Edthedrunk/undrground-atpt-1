@@ -17,7 +17,7 @@ export default function RenderCanvas() {
     <Rcanvas
       ref={renderRef}
       gl={{ preserveDrawingBuffer: true }}
-      camera={{ position: [0, 1, 4] }}
+      camera={{ position: [0, 1.5, 4] }}
       style={{
         width: "1000px",
         height: "1000px",
@@ -29,7 +29,7 @@ export default function RenderCanvas() {
           <GradientTexture stops={[0, 1]} colors={["#F2F2F2", "#595959"]} />
         </meshBasicMaterial>
       </mesh>
-      <group dispose={null} position={[0, 0.5, -0.1]}>
+      <group dispose={null} position={[0, 0.7, -0.1]}>
         {Object.values(linkOrder!).map((value, i) => (
           <BlokModel
             key={i}
@@ -39,6 +39,7 @@ export default function RenderCanvas() {
           />
         ))}
       </group>
+      <directionalLight position={[0, 5, 10]} intensity={2} />
       <ContactShadows opacity={0.75} blur={3} />
       <Environment preset="city" />\
       <Preload all />
