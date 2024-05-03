@@ -28,7 +28,9 @@ const EditMode = () => {
     }
 
     link.download = "blokchain.png";
-    link.href = renderRef.current.toDataURL("image/png");
+    link.href = renderRef.current
+      .toDataURL("image/png")
+      .replace("image/png", "image/octet-stream");
     link.target = "_blank";
     link.click();
     link.remove();
