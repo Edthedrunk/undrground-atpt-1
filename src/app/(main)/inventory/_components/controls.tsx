@@ -22,13 +22,14 @@ const EditMode = () => {
 
   const downloadImage = () => {
     const link = document.createElement("a");
-    link.download = "blokchain.png";
 
     if (!renderRef.current) {
       return;
     }
 
-    link.href = renderRef.current.toDataURL();
+    link.download = "blokchain.png";
+    link.href = renderRef.current.toDataURL("image/png");
+    link.target = "_blank";
     link.click();
     link.remove();
   };
@@ -54,7 +55,10 @@ const EditMode = () => {
           <Undo2 className="size-5" />
           RESET
         </Button>
-        <Button onClick={() => setEditMode(!true)}>VIEW MODE</Button>
+        <Button onClick={() => setEditMode(!true)}>
+          <span className="block sm:hidden">VIEW</span>
+          <span className="hidden sm:block">VIEW MODE</span>
+        </Button>
         <Button
           disabled={!renderRef.current}
           onClick={downloadImage}
