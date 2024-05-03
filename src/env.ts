@@ -11,13 +11,11 @@ export const env = createEnv({
     VERCEL_ENV: z.enum(["development", "preview", "production"]).optional(),
   },
   server: {
-    BROWSERLESS_TOKEN: z.string(),
     SESSION_PASS: z.string().min(32),
     // IPFS_KEY: z.string(),
   },
   runtimeEnv: {
     // IPFS_KEY: process.env.IPFS_KEY,
-    BROWSERLESS_TOKEN: process.env.BROWSERLESS_TOKEN,
     SESSION_PASS: process.env.SESSION_PASS,
     NEXT_PUBLIC_CONTRACT_ADDRESS: process.env
       .NEXT_PUBLIC_CONTRACT_ADDRESS,
