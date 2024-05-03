@@ -19,17 +19,19 @@ export default function RenderCanvas() {
       gl={{ preserveDrawingBuffer: true }}
       camera={{ position: [0, 1.5, 4] }}
       style={{
-        width: "1000px",
-        height: "1000px",
+        width: 1000,
+        height: 1000,
+        position: "absolute",
+        zIndex: -10,
       }}
     >
-      <mesh scale={[15, 15, 15]} position={[0, 0, -3]}>
+      <mesh scale={[20, 20, 20]} position={[0, 0, -3]}>
         <planeGeometry />
         <meshBasicMaterial>
           <GradientTexture stops={[0, 1]} colors={["#F2F2F2", "#595959"]} />
         </meshBasicMaterial>
       </mesh>
-      <group dispose={null} position={[0, 0.7, -0.1]}>
+      <group dispose={null} position={[0, 0.5, -0.1]}>
         {Object.values(linkOrder!).map((value, i) => (
           <BlokModel
             key={i}

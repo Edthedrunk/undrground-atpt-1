@@ -72,9 +72,7 @@ export default async function InventoryPage() {
           aria-label="Builder"
           className="overflow-hidden h-full min-h-[1100px] py-10 flex flex-col grow bg-foreground bg-grid-white/5"
         >
-          <div className="absolute -z-10">
-            <RenderCanvas />
-          </div>
+          <RenderCanvas />
           <div className="p-4 gap-4 relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-center">
             <div className="min-h-[800px] relative aspect-square bg-gradient-to-b from-background to-muted-foreground rounded-md drop-shadow w-full max-w-[800px]">
               <Keybinds />
