@@ -8,6 +8,7 @@ import { BuilderProvider } from "./_components/builder-context";
 import { Controls } from "./_components/controls";
 import { Inventory } from "./_components/inventory";
 import { Keybinds } from "./_components/keybinds";
+import RenderCanvas from "./_components/render-canvas";
 
 const Canvas = dynamic(
   () => import("./_components/canvas").then((mod) => mod.default),
@@ -26,7 +27,7 @@ export default async function InventoryPage() {
   const tokens = await getInventory(profile?.address);
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="relative flex flex-col h-screen">
       <section
         aria-label="Inventory"
         className="w-full pt-20 pb-10 bg-gradient-to-b from-background to-muted-foreground"
@@ -66,12 +67,15 @@ export default async function InventoryPage() {
           </div>
         </div>
       </section>
-      <section
-        aria-label="Builder"
-        className="py-10 flex flex-col grow relative bg-foreground bg-grid-white/5"
-      >
-        <div className="h-full p-4 gap-4 relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-center">
-          <BuilderProvider inventory={tokens}>
+      <BuilderProvider inventory={tokens}>
+        <section
+          aria-label="Builder"
+          className="overflow-hidden h-full min-h-[1100px] py-10 flex flex-col grow bg-foreground bg-grid-white/5"
+        >
+          <div className="absolute -z-10">
+            <RenderCanvas />
+          </div>
+          <div className="p-4 gap-4 relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-center">
             <div className="min-h-[800px] relative aspect-square bg-gradient-to-b from-background to-muted-foreground rounded-md drop-shadow w-full max-w-[800px]">
               <Keybinds />
               <div className="z-10 p-4 w-full  bottom-0 absolute flex flex-col gap-2">
@@ -80,214 +84,9 @@ export default async function InventoryPage() {
               </div>
               <Canvas />
             </div>
-          </BuilderProvider>
-        </div>
-        <div className="overflow-hidden z-0 absolute pointer-events-none inset-0 flex items-center justify-center bg-foreground [mask-image:radial-gradient(ellipse_at_center,rgba(0,0,0,0.3)_20%,black)]">
-          <div className="opacity-50 overflow-hidden pointer-events-none absolute flex flex-col gap-2 rotate-3 top-30">
-            <div className="flex flex-row gap-2">
-              <div className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center">
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-            </div>
-            <div className="flex flex-row gap-2">
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-            </div>
-            <div className="flex flex-row gap-2">
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-            </div>
-            <div className="flex flex-row gap-2">
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-            </div>
-            <div className="flex flex-row gap-2">
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-            </div>
-            <div className="flex flex-row gap-2">
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-            </div>
-            <div className="flex flex-row gap-2">
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-            </div>
-            <div className="flex flex-row gap-2">
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-            </div>
-            <div className="flex flex-row gap-2">
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-              <div
-                aria-hidden="true"
-                className="shrink-0 text-4xl font-bold flex-nowrap text-muted-foreground animate-infinite-scroll flex flex-row gap-2 items-center"
-              >
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-                <span>BUILDER COMING SOON</span>
-              </div>
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </BuilderProvider>
     </div>
   );
 }

@@ -1,6 +1,14 @@
 "use client";
 
-import { createContext, useContext, useMemo, useRef, useState } from "react";
+import {
+  LegacyRef,
+  RefObject,
+  createContext,
+  useContext,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 interface ContextProps {
   linkOrder: {
@@ -17,34 +25,14 @@ interface ContextProps {
     [key: string]: string[];
   };
   rotation: number;
+  renderRef: RefObject<HTMLCanvasElement>;
 }
 
 const defaultOrder = Object.fromEntries(
   [...Array(42)].map((i, index) => [index + 1, index == 0 ? "White" : "Black"])
 );
 
-export const BuilderContext = createContext<ContextProps>({
-  linkOrder: {},
-  setLink: function (link: string, color: string): void {
-    throw new Error("Function not implemented.");
-  },
-  currentLink: 1,
-  nextLink: function (): void {
-    throw new Error("Function not implemented.");
-  },
-  prevLink: function (): void {
-    throw new Error("Function not implemented.");
-  },
-  resetLinkOrder: function (): void {
-    throw new Error("Function not implemented.");
-  },
-  editMode: false,
-  setEditMode: function (editMode: boolean): void {
-    throw new Error("Function not implemented.");
-  },
-  inventory: {},
-  rotation: (2 * Math.PI * 0) / 42,
-});
+export const BuilderContext = createContext<ContextProps | null>(null);
 
 export const BuilderProvider = ({
   children,
@@ -122,12 +110,18 @@ export const BuilderProvider = ({
   );
 
   return (
-    <BuilderContext.Provider value={contextValue}>
+    <BuilderContext.Provider
+      value={{ ...contextValue, renderRef: useRef<HTMLCanvasElement>(null) }}
+    >
       {children}
     </BuilderContext.Provider>
   );
 };
 
 export const useBuilderContext = () => {
-  return useContext(BuilderContext);
+  const context = useContext(BuilderContext);
+  if (!context) {
+    throw new Error("useBuilderContext must be used within a BuilderProvider");
+  }
+  return context;
 };

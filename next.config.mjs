@@ -1,11 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: [
-      "playwright-core",
-      "playwright-aws-lambda",
-    ],
-  },
-};
+const nextConfig = {};
 
 export default nextConfig;

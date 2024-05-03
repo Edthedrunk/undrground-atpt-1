@@ -3,6 +3,7 @@
 import {
   ContactShadows,
   Environment,
+  Preload,
   PresentationControls,
 } from "@react-three/drei";
 import { Canvas as Rcanvas } from "@react-three/fiber";
@@ -14,10 +15,7 @@ export default function Canvas() {
   const { currentLink, editMode, rotation } = useBuilderContext();
 
   return (
-    <Rcanvas
-      gl={{ preserveDrawingBuffer: true }}
-      camera={{ position: [0, 2.5, 4] }}
-    >
+    <Rcanvas camera={{ position: [0, 2.5, 4] }}>
       <PresentationControls
         global
         polar={[-0.4, 0.1]}
@@ -37,7 +35,8 @@ export default function Canvas() {
         intensity={2}
       />
       <ContactShadows opacity={0.75} blur={3} />
-      <Environment preset="city" />
+      <Environment preset="city" />\
+      <Preload all />
     </Rcanvas>
   );
 }

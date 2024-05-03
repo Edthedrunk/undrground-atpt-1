@@ -5,7 +5,8 @@ import { useBuilderContext } from "./builder-context";
 import {
   ArrowLeftCircle,
   ArrowRightCircle,
-  CheckCircle,
+  // CheckCircle,
+  ImageIcon,
   Undo2,
 } from "lucide-react";
 
@@ -16,8 +17,21 @@ const Controls = () => {
 };
 
 const EditMode = () => {
-  const { setEditMode, resetLinkOrder, nextLink, prevLink } =
+  const { renderRef, setEditMode, resetLinkOrder, nextLink, prevLink } =
     useBuilderContext();
+
+  const downloadImage = () => {
+    const link = document.createElement("a");
+    link.download = "blokchain.png";
+
+    if (!renderRef.current) {
+      return;
+    }
+
+    link.href = renderRef.current.toDataURL();
+    link.click();
+    link.remove();
+  };
 
   return (
     <div className="flex flex-col sm:flex-row gap-2 items-center">
@@ -42,11 +56,12 @@ const EditMode = () => {
         </Button>
         <Button onClick={() => setEditMode(!true)}>VIEW MODE</Button>
         <Button
-          disabled={true}
+          disabled={!renderRef.current}
+          onClick={downloadImage}
           className="w-full sm:w-auto flex gap-2 items-center"
         >
-          <CheckCircle className="size-5" />
-          CREATE
+          <ImageIcon className="size-5" />
+          SNAP
         </Button>
         <Button className="w-full hidden sm:block" onClick={prevLink}>
           <ArrowRightCircle className="ml-auto" />
