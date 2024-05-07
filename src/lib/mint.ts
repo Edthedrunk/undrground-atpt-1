@@ -30,8 +30,8 @@ export const mint = async (count: number) => {
   } catch (error) {
     console.log(error)
     const errorDecoder = ErrorDecoder.create([abi])
-    const { reason } = await errorDecoder.decode(error as DecodedError)
+    const { name } = await errorDecoder.decode(error as DecodedError)
 
-    return { status: false, error: reason };
+    return { status: false, error: name };
   }
 };
