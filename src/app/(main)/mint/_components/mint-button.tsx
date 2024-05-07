@@ -24,7 +24,8 @@ const MintButton = ({ disabled }: { disabled?: boolean }) => {
         toast.success("Minted");
         router.push("/inventory");
       } else {
-        toast.error("Error Minting");
+        console.log(mintCall.error);
+        toast.error("Error minting");
       }
     });
   };
