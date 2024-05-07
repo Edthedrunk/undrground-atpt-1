@@ -3,6 +3,8 @@ import { BrowserProvider, parseEther, toBigInt } from "ethers";
 import { Contract } from "ethers";
 import { env } from "@/env";
 import abi from "@/contracts/abis/blokcharms.json";
+import { ErrorDecoder } from 'ethers-decode-error'
+import type { DecodedError } from 'ethers-decode-error'
 
 export const mint = async (count: number) => {
   try {
@@ -26,6 +28,10 @@ export const mint = async (count: number) => {
 
     return { status: true };
   } catch (error) {
-    return { status: false, error: error };
+    console.log(error)
+    const errorDecoder = ErrorDecoder.create([abi])
+    const { reason } = await errorDecoder.decode(error as DecodedError)
+
+    return { status: false, error: reason };
   }
 };
