@@ -23,7 +23,8 @@ export default async function MintPage() {
               </h1>
               <p className="font-mono mx-auto max-w-[700px] text-muted-foreground md:text-xl">
                 Each Blok you mint will randomly be assigned one of these colors
-                from the remaining supply.
+                from the remaining supply. Each wallet can mint a max of 420
+                Bloks.
               </p>
             </div>
           </div>

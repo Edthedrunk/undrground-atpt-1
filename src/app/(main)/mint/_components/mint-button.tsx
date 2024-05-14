@@ -34,6 +34,7 @@ const MintButton = ({ disabled }: { disabled?: boolean }) => {
       disabled={disabled}
       isLoading={isPending}
       onClick={handleClick}
+      variant="secondary"
     >
       Mint
     </LoaderButton>

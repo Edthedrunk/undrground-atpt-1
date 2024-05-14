@@ -20,7 +20,7 @@ export default function Home() {
               <p className="font-mono mx-auto max-w-[700px] text-muted-foreground md:text-xl">
                 This is the beginning of your journey with the Blokchain You
                 will need 42 Bloks to create your Blokchain in the second phase
-                of the process!
+                of the process! You can mint 420 Bloks per wallet!
               </p>
             </div>
             <div className="flex gap-2 items-center">
@@ -70,7 +70,8 @@ export default function Home() {
               and click mint! Each Blok will be assigned a random color from the
               available colors left in supply, when the transaction completes
               you will be redirected to the inventory page where you can see the
-              total number of Bloks you have minted and their colors.
+              total number of Bloks you have minted and their colors. Each
+              wallet can mint a max of 420 Bloks.
             </p>
             <div className="h-4" />
             <Link className={buttonVariants()} href="/mint">
