@@ -4,7 +4,7 @@ import { JsonRpcProvider, formatEther } from "ethers";
 import { twMerge } from "tailwind-merge";
 import lsp3 from "@erc725/erc725.js/schemas/LSP3ProfileMetadata.json";
 
-export const mainnetRPC = "https://rpc.lukso.gateway.fm";
+export const mainnetRPC = "https://42.rpc.thirdweb.com";
 export const testnetRPC = "https://rpc.testnet.lukso.network";
 
 export const cn = (...inputs: ClassValue[]) => {
